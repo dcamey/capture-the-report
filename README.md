@@ -50,18 +50,36 @@ Abre http://localhost:3000 — si ves la página de bienvenida, estás listo.
 
 ## 🏆 Evaluación
 
-| Criterio | Peso |
-|----------|------|
-| Funciona en vivo | 30% |
-| Planteamiento y visión (¿qué tan claro está el problema, la solución y dónde encaja en la plataforma?) | 30% |
-| Impacto en el día a día (horas ahorradas) | 20% |
-| Calidad y continuidad (README, orden de la rama, retomable el lunes) | 20% |
+**Hay un solo ganador**, y sale de la evaluación del proyecto más el bonus de la Copa de Retos.
 
-**Puntos extra:** 🌐 demo desplegada en línea (Vercel u otro) suma al marcador de retos.
+### Evaluación del proyecto (sobre 100)
+
+| Criterio | Peso | Evidencia que se verifica |
+|----------|------|---------------------------|
+| **Planteamiento y visión** | **35%** | `docs/PLANTEAMIENTO.md` completo y committeado **antes de las 3:15 PM** (lo dice el timestamp de git). Problema específico, solución clara, flujo completo y encaje en la plataforma. |
+| Funciona en vivo | 30% | El camino feliz corre completo en la demo, desde la rama, con los datos de prueba. |
+| Impacto en el día a día | 20% | Estimación argumentada de horas ahorradas por semana/proyecto. |
+| Calidad y continuidad | 15% | `README-EQUIPO.md` + la rama corre con `npm install && npm run dev` desde cero. |
+
+Cada criterio lo puntúan los jueces con rúbrica de 1–5, y hay voto popular (nadie vota por su propio equipo). **Puntaje del proyecto = 50% jueces + 50% voto popular.**
+
+### Copa de Retos (bonus, máximo +10)
+
+Los puntos de retos se normalizan contra el líder para que sumen emoción sin distorsionar la evaluación:
+
+```
+Bonus = 10 × (puntos de retos de tu equipo ÷ puntos del equipo líder)
+```
+
+**Puntaje final = Evaluación (máx 100) + Bonus Copa (máx 10).**
+
+Desempates, en orden: (1) más puntos brutos de retos, (2) mejor puntaje en Planteamiento y visión, (3) último commit más temprano antes del code freeze.
 
 ## ⚡ Retos bonus (Copa de Retos)
 
-Marcador en vivo durante todo el día. Puntos por: primer prototipo funcional en pantalla, ayudar a destrabar a otro equipo, README que otro equipo pueda seguir, el mejor flujo con agentes de IA, deploy en línea… y sorpresas que se anuncian durante la tarde. El equipo con más puntos gana la **Copa de Retos**.
+Marcador en vivo durante todo el día, fijado en el canal del evento. Retos conocidos: *First blood* +25 (primer prototipo funcional en pantalla), *Rescate* +50 (destrabar a otro equipo), *Prompt maestro* +50 (el mejor flujo con agentes), *Manual de vuelo* +50 (otro equipo corre tu rama solo con el README), 🌐 *Deploy* +100 (demo desplegada en línea) — y sorpresas que se anuncian durante la tarde.
+
+**Regla de validación:** un reto solo existe si un árbitro (Tomás o Mei) lo valida en el momento y queda registrado en el marcador con equipo, reto, hora y evidencia (screenshot o link al commit). Sin registro no hay puntos — así el veredicto final es auditable.
 
 ---
 
