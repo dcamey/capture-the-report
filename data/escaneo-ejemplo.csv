@@ -1,0 +1,11 @@
+host,puerto,servicio,vulnerabilidad,severidad,cvss,cve,estado,primera_deteccion,ultima_deteccion
+10.10.20.5,443,https,Certificado TLS autofirmado,Media,5.3,,abierto,2026-07-14,2026-09-01
+10.10.20.5,443,https,TLS 1.0 habilitado,Media,6.5,,abierto,2026-07-14,2026-09-01
+10.10.20.8,22,ssh,OpenSSH desactualizado,Alta,8.1,CVE-2023-38408,abierto,2026-08-02,2026-09-01
+10.10.20.8,3306,mysql,MySQL accesible desde red interna sin restricción,Alta,7.5,,abierto,2026-08-02,2026-09-01
+10.10.20.12,80,http,Directorio /backup expuesto,Crítica,9.1,,abierto,2026-08-20,2026-09-01
+10.10.20.12,80,http,Listado de directorios habilitado,Baja,3.7,,remediado,2026-07-14,2026-08-15
+10.10.20.15,445,smb,SMBv1 habilitado,Alta,8.8,CVE-2017-0144,abierto,2026-07-14,2026-09-01
+10.10.20.15,139,netbios,NetBIOS expone nombre de equipo,Baja,2.6,,abierto,2026-07-14,2026-09-01
+10.10.20.22,8080,http-proxy,Consola de administración con credenciales por defecto,Crítica,9.8,,abierto,2026-08-28,2026-09-01
+10.10.20.30,443,https,Cabecera HSTS ausente,Baja,3.1,,abierto,2026-07-14,2026-09-01

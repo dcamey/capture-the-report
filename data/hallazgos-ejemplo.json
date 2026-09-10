@@ -1,0 +1,69 @@
+{
+  "proyecto": "VAPT Web - ACME Corp (DATOS SINTÉTICOS)",
+  "fecha_inicio": "2026-08-10",
+  "fecha_fin": "2026-08-21",
+  "consultores": ["Consultor A", "Consultor B"],
+  "alcance": ["https://app.acme-demo.example", "https://api.acme-demo.example"],
+  "hallazgos": [
+    {
+      "id": "F-001",
+      "titulo": "Inyección SQL en parámetro de búsqueda",
+      "severidad": "Crítica",
+      "cvss": 9.8,
+      "estado": "Abierto",
+      "activo": "https://app.acme-demo.example/search",
+      "descripcion": "El parámetro 'q' del buscador concatena la entrada del usuario directamente en la consulta SQL, permitiendo extracción de datos de la base.",
+      "evidencia": "Payload de prueba: ' OR 1=1-- devolvió el listado completo de usuarios.",
+      "recomendacion": "Usar consultas parametrizadas (prepared statements) y validación de entrada.",
+      "referencias": ["OWASP A03:2021", "CWE-89"]
+    },
+    {
+      "id": "F-002",
+      "titulo": "Autenticación sin límite de intentos",
+      "severidad": "Alta",
+      "cvss": 8.1,
+      "estado": "Abierto",
+      "activo": "https://app.acme-demo.example/login",
+      "descripcion": "El endpoint de login no implementa bloqueo ni rate limiting, permitiendo ataques de fuerza bruta.",
+      "evidencia": "Se realizaron 500 intentos consecutivos sin bloqueo desde la misma IP.",
+      "recomendacion": "Implementar rate limiting, bloqueo temporal y MFA.",
+      "referencias": ["OWASP A07:2021", "CWE-307"]
+    },
+    {
+      "id": "F-003",
+      "titulo": "Cabeceras de seguridad ausentes",
+      "severidad": "Media",
+      "cvss": 5.3,
+      "estado": "Abierto",
+      "activo": "https://app.acme-demo.example",
+      "descripcion": "Faltan las cabeceras Content-Security-Policy, X-Frame-Options y Strict-Transport-Security.",
+      "evidencia": "Respuesta HTTP sin cabeceras de seguridad (ver anexo).",
+      "recomendacion": "Configurar las cabeceras de seguridad recomendadas en el servidor web.",
+      "referencias": ["OWASP A05:2021"]
+    },
+    {
+      "id": "F-004",
+      "titulo": "Versión de servidor expuesta en banners",
+      "severidad": "Baja",
+      "cvss": 3.1,
+      "estado": "Remediado",
+      "activo": "https://api.acme-demo.example",
+      "descripcion": "La cabecera 'Server' revela versión exacta del servidor web, facilitando la identificación de vulnerabilidades conocidas.",
+      "evidencia": "Server: nginx/1.18.0 en todas las respuestas.",
+      "recomendacion": "Ocultar o genericizar el banner del servidor.",
+      "referencias": ["CWE-200"]
+    },
+    {
+      "id": "F-005",
+      "titulo": "Cookies de sesión sin atributos de seguridad",
+      "severidad": "Media",
+      "cvss": 6.5,
+      "estado": "Abierto",
+      "activo": "https://app.acme-demo.example",
+      "descripcion": "La cookie de sesión no incluye los atributos Secure, HttpOnly ni SameSite.",
+      "evidencia": "Set-Cookie: session=...; Path=/ (sin atributos).",
+      "recomendacion": "Agregar Secure, HttpOnly y SameSite=Strict a las cookies de sesión.",
+      "referencias": ["OWASP A05:2021", "CWE-1004"]
+    }
+  ]
+}
