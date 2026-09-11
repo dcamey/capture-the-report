@@ -1,6 +1,6 @@
-# Equipo 05 — Capture The Report
+# Equipo 05 — ProdigiES
 
-> Estado: **base de trabajo lista, prototipo por definir.** El planteamiento está en curso en [`docs/PLANTEAMIENTO.md`](docs/PLANTEAMIENTO.md).
+> **ProdigiES** — el radar de talento de ES Consulting. El planteamiento está en [`docs/PLANTEAMIENTO.md`](docs/PLANTEAMIENTO.md) y el guion de la demo en [`docs/PITCH.md`](docs/PITCH.md).
 
 ## Qué hace el prototipo
 

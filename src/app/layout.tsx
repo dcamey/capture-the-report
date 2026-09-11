@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SkillRadar · ES Consulting",
+  title: "ProdigiES · ES Consulting",
   description:
     "Buscador de talento interno: escribe los requisitos de una licitación y encuentra quién califica.",
 };

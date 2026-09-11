@@ -4,8 +4,8 @@
 
 - **Número de equipo:** 05
 - **Integrantes:** Nadia, Denis, Isra, Daniel, Luis
-- **Nombre del prototipo:** **SkillRadar** — el radar de talento de ES Consulting
-  _(alternativas si no gusta: "¿Quién Sabe?", "Radar de Talento", "TalentoES")_
+- **Nombre del prototipo:** **ProdigiES** — el radar de talento de ES Consulting
+  _(nombre formal ya decidido por el equipo; antes se trabajó como "SkillRadar")_
 
 ## 2. El problema
 
@@ -44,7 +44,7 @@ disperso.
 
 **Qué hace la primera rebanada — lo de hoy:**
 Un **buscador de talento interno**. El usuario escribe los requisitos de una licitación en lenguaje
-natural — por ejemplo *"pentest web + ISO 27001 + inglés"* — y SkillRadar devuelve las personas que
+natural — por ejemplo *"pentest web + ISO 27001 + inglés"* — y ProdigiES devuelve las personas que
 califican, **ordenadas por mejor match**, mostrando su nivel en cada skill requerido (1–5), su
 equipo, su rol y su **% de disponibilidad**. De ahí se genera una **ficha de capacidades imprimible**
 lista para adjuntar a la propuesta.
@@ -91,7 +91,7 @@ datos de skills alimenta reportería para las otras dos áreas:
      navegador y adjuntar a la propuesta.
 4. **¿Quién valida antes de que se use/envíe?** El **líder del equipo** de la persona propuesta
    confirma disponibilidad real, y **Comercial** valida que el perfil calce con el cliente antes de
-   que la ficha salga en la propuesta. SkillRadar propone; la gente decide.
+   que la ficha salga en la propuesta. ProdigiES propone; la gente decide.
 
 ```
 [Requisitos de licitación]
@@ -228,7 +228,7 @@ Comercial antes del pitch:_
 
 - **Hoy:** 3–5 h de trabajo efectivo por propuesta buscando quién califica, repartidas en 1–2 días
   de espera de respuestas.
-- **Con SkillRadar:** la búsqueda baja a minutos; queda solo la validación humana con el líder.
+- **Con ProdigiES:** la búsqueda baja a minutos; queda solo la validación humana con el líder.
 - **Ahorro:** ~3–4 h por propuesta. Con **4 propuestas al mes**, son **~12–16 h/mes** solo en
   Comercial — sin contar el beneficio menos medible pero más caro: dejar de declinar o subcontratar
   oportunidades por una capacidad que sí existía adentro.

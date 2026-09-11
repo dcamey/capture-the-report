@@ -33,7 +33,7 @@ export default async function Home({ searchParams }: PageProps<"/">) {
           ES Consulting · Equipo 05
         </p>
         <h1 className="mt-3 text-4xl font-bold tracking-tight">
-          Skill<span className="text-cyan-400">Radar</span>
+          Prodigi<span className="text-cyan-400">ES</span>
         </h1>
         <p className="mt-2 text-lg text-slate-300">
           ¿Quién de la casa puede hacer esto? Escribe los requisitos de la
@@ -213,7 +213,7 @@ export default async function Home({ searchParams }: PageProps<"/">) {
 
         <footer className="mt-14 border-t border-slate-800 pt-5 text-xs text-slate-500">
           <p>
-            SkillRadar propone; la gente decide. El líder del equipo confirma la
+            ProdigiES propone; la gente decide. El líder del equipo confirma la
             disponibilidad real y Comercial valida el perfil antes de que la
             ficha salga en una propuesta.
           </p>
@@ -264,7 +264,7 @@ function SinBusqueda({ escala }: { escala: EscalaNivel[] }) {
           },
           {
             n: "2",
-            titulo: "SkillRadar cruza el catálogo",
+            titulo: "ProdigiES cruza el catálogo",
             detalle:
               "Habilidades técnicas, soluciones y blandas, más idiomas y certificaciones vigentes.",
           },

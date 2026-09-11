@@ -1,4 +1,4 @@
-# 🎤 Guía de pitch y demo — Equipo 05 · SkillRadar
+# 🎤 Guía de pitch y demo — Equipo 05 · ProdigiES
 
 ## El pitch (2:45 PM — máximo 2 minutos, un representante)
 
@@ -13,7 +13,7 @@
 
 ### 2. La solución (30 seg)
 
-> Construimos **SkillRadar**: le escribes el requisito de la licitación — *"Infoblox"*, *"VAPT Web +
+> Construimos **ProdigiES**: le escribes el requisito de la licitación — *"Infoblox"*, *"VAPT Web +
 > inglés"* — y te devuelve **quién califica, ordenado por mejor match**, con su nivel en cada skill
 > (0 a 3), sus certificaciones y su **% de disponibilidad**. De ahí sale la **ficha de capacidades
 > imprimible** para adjuntar a la propuesta.
@@ -21,7 +21,7 @@
 ### 3. El flujo (30 seg)
 
 > 1. Escribes el requisito de la licitación.
-> 2. SkillRadar cruza el catálogo de habilidades — **técnicas, soluciones y blandas** — y ordena a
+> 2. ProdigiES cruza el catálogo de habilidades — **técnicas, soluciones y blandas** — y ordena a
 >    las personas por nivel, certificación y disponibilidad.
 > 3. Generas la ficha del candidato para la propuesta.
 
@@ -95,7 +95,7 @@ Si un árbitro pregunta, esto es lo que se responde sin titubear:
   habilidades; cuando entren, los nombres van anonimizados y el mapeo se queda fuera del repo.
 - **La escala 0–3 sí es la lógica real** de la matriz de Ingeniería: 0 no tiene, 1 básico con
   supervisión, 2 intermedio autónomo, 3 avanzado — puede liderar, entrenar y diseñar.
-- **SkillRadar propone; la gente decide.** El líder del equipo confirma la disponibilidad real y
+- **ProdigiES propone; la gente decide.** El líder del equipo confirma la disponibilidad real y
   Comercial valida el perfil antes de que la ficha salga en la propuesta.
 
 ### Checklist antes de la demo

@@ -68,7 +68,7 @@ export default async function Reporte({ searchParams }: PageProps<"/reporte">) {
           <header className="border-b-2 border-slate-900 pb-4">
             <div className="flex items-baseline justify-between gap-4">
               <p className="text-xs font-bold uppercase tracking-[0.25em] text-slate-500">
-                ES Consulting · SkillRadar
+                ES Consulting · ProdigiES
               </p>
               <p className="text-xs text-slate-500">{fechaLarga()}</p>
             </div>
@@ -112,7 +112,7 @@ export default async function Reporte({ searchParams }: PageProps<"/reporte">) {
               <strong className="text-slate-700">Validación requerida:</strong>{" "}
               el líder del equipo confirma la disponibilidad real y Comercial
               valida el perfil antes de que esta ficha salga en una propuesta.
-              SkillRadar propone; la gente decide.
+              ProdigiES propone; la gente decide.
             </p>
             <p className="mt-2">
               Escala 0–3 de la matriz de habilidades:{" "}
@@ -120,7 +120,7 @@ export default async function Reporte({ searchParams }: PageProps<"/reporte">) {
               .
             </p>
             <p className="mt-2">
-              Documento generado por SkillRadar (prototipo de hackathon) con
+              Documento generado por ProdigiES (prototipo de hackathon) con
               datos de demostración — ninguna persona real de ES Consulting
               aparece con sus datos.
             </p>
