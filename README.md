@@ -62,7 +62,7 @@ Abre http://localhost:3000 — si ves la página de bienvenida, estás listo.
 | **Planteamiento y visión** | **35%** | `docs/PLANTEAMIENTO.md` completo y committeado **antes de las 3:15 PM** (lo dice el timestamp de git). Problema específico, solución clara, flujo completo y encaje en la plataforma. |
 | Funciona en vivo | 30% | El camino feliz corre completo en la demo, desde la rama, con los datos de prueba. |
 | Impacto en el día a día | 20% | Estimación argumentada de horas ahorradas por semana/proyecto. |
-| Calidad y continuidad | 15% | `README-EQUIPO.md` + la rama corre con `npm install && npm run dev` desde cero. |
+| Calidad y continuidad | 15% | `README-EQUIPO.md` + la rama corre desde cero siguiendo sus propias instrucciones. |
 
 Cada criterio lo puntúan los jueces con rúbrica de 1–5, y hay voto popular (nadie vota por su propio equipo). **Puntaje del proyecto = 50% jueces + 50% voto popular.**
 
