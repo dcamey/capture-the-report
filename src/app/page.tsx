@@ -245,8 +245,8 @@ export default async function Dashboard() {
                     titulo={`Vence ${aviso.certificacion.vence}`}
                   >
                     {aviso.estado === "vencida"
-                      ? `vencida hace ${Math.abs(aviso.dias)} d`
-                      : `vence en ${aviso.dias} d`}
+                      ? `vencida hace ${Math.abs(aviso.dias)} días`
+                      : `vence en ${aviso.dias} días`}
                   </Etiqueta>
                 </li>
               ))}
