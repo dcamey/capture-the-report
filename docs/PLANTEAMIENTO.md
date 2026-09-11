@@ -1,6 +1,6 @@
 # 📐 Planteamiento — Equipo XX
 
-> ⛔ **Completar este documento ANTES de escribir código.** Es obligatorio, se evalúa (30% del puntaje), y es lo que hace que el agente de IA trabaje bien: un planteamiento claro = un prototipo que avanza solo.
+> ⛔ **Completar este documento ANTES de escribir código.** Es obligatorio, se evalúa (35% del puntaje), y es lo que hace que el agente de IA trabaje bien: un planteamiento claro = un prototipo que avanza solo.
 >
 > Tiempo sugerido: 30–40 minutos entre todo el equipo. Sean concretos — frases cortas valen más que párrafos.
 
@@ -58,3 +58,17 @@ _Con ~3 horas de desarrollo, sean brutalmente realistas:_
 - ¿Quién maneja el agente / código?
 - ¿Quién prepara datos y prueba el flujo?
 - ¿Quién arma el pitch y la demo?
+
+---
+
+### Ejemplo express
+
+_Así se ve un planteamiento bien llenado (no lo copien, es solo la referencia del nivel de detalle):_
+
+- **Problema:** el resumen semanal de escaneos se arma a mano en Word — 2 horas cada lunes, copiando y pegando del escáner.
+- **Quién lo sufre:** los consultores de VAPT, todas las semanas.
+- **Solución:** una web donde subes el CSV del escáner y te devuelve el resumen ya redactado, listo para revisar.
+- **Flujo:** subir CSV → parsear filas → agrupar por severidad → redactar el resumen con IA → mostrar un HTML imprimible.
+- **Alcance de HOY:** (1) subir el CSV de `data/`, (2) ver el reporte generado en pantalla.
+- **Hoy NO:** login, guardar histórico, exportar a PDF.
+- **Dato de demo:** `data/escaneo-ejemplo.csv`.

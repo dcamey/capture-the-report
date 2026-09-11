@@ -23,6 +23,8 @@ Abre http://localhost:3000 — si ves la página de bienvenida, estás listo.
 
 > ⚠️ **Nunca trabajes en `main`.** Todo el trabajo de tu equipo vive en su rama `equipo-XX`. Hagan commits frecuentes y push a su rama.
 
+> 👤 **¿Eres líder de equipo?** Pasa por [`docs/LIDERES.md`](docs/LIDERES.md): checklist de preparación, cómo configurar Claude Code para el evento y tu rol durante el día.
+
 ## 📋 El flujo del día
 
 | Fase | Hora | Qué hacer |
@@ -33,10 +35,11 @@ Abre http://localhost:3000 — si ves la página de bienvenida, estás listo.
 | **4. Prototipo** | 3:15 – 6:00 | A construir. El agente ya conoce las reglas (ver `CLAUDE.md`). Prioridad: algo que se vea funcionando en pantalla. |
 | **5. Demo** | 6:00 – 7:30 | Máximo 5 minutos por equipo, demo en vivo desde su rama. |
 
-## 🛠 Stack
+## 🛠 Stack (muy recomendado)
 
-- **Next.js 15** (App Router) + **TypeScript** + **Tailwind CSS** — ya configurado, solo `npm install`.
-- Todo debe ser **web**. El backend va en API routes (`src/app/api/`).
+- **Next.js 15** (App Router) + **TypeScript** + **Tailwind CSS** — ya configurado, solo `npm install`. Es el camino rápido: arrancan en 5 minutos y el agente ya conoce el terreno.
+- **¿Su equipo domina otro stack web?** Úsenlo. Vale más avanzar con lo que ya manejan que pelearse con algo nuevo en 3 horas. Solo documenten en su `README-EQUIPO.md` cómo instalarlo y correrlo, para que cualquiera pueda levantar su rama.
+- **Lo único no negociable:** el prototipo debe ser **web** y **correr en local** para la demo.
 - Para persistencia del prototipo: archivos JSON, memoria o `localStorage` — no pierdan tiempo montando bases de datos.
 - Datos de prueba sanitizados en [`data/`](data/) — úsenlos como entrada de sus prototipos.
 
@@ -46,7 +49,7 @@ Abre http://localhost:3000 — si ves la página de bienvenida, estás listo.
 2. **Planteamiento primero.** `docs/PLANTEAMIENTO.md` completo antes de la primera línea de código. Es obligatorio y se evalúa.
 3. **Agentes de IA permitidos y fomentados.** Solo pide una cosa: que el equipo entienda y pueda explicar lo que entrega.
 4. **Demo en vivo.** Lo que se evalúa corre en pantalla. Si algo quedó a medias, se muestra hasta donde llegó.
-5. **🔒 Cero datos reales de clientes.** Solo datos sanitizados o sintéticos (los de `data/` o los que fabriquen).
+5. **🔒 Cuiden los datos.** Eviten datos que divulguen información sensible o identificable de clientes. Si parten de algo real, sanitícenlo antes: anonimicen hosts, nombres y hallazgos. Los de [`data/`](data/) ya vienen listos para usar.
 
 ## 🏆 Evaluación
 
@@ -78,6 +81,8 @@ Desempates, en orden: (1) más puntos brutos de retos, (2) mejor puntaje en Plan
 ## ⚡ Retos bonus (Copa de Retos)
 
 Marcador en vivo durante todo el día, fijado en el canal del evento. Retos conocidos: *First blood* +25 (primer prototipo funcional en pantalla), *Rescate* +50 (destrabar a otro equipo), *Prompt maestro* +50 (el mejor flujo con agentes), *Manual de vuelo* +50 (otro equipo corre tu rama solo con el README), 🌐 *Deploy* +100 (demo desplegada en línea) — y sorpresas que se anuncian durante la tarde.
+
+🏎️ **Grand Prix:** durante el bloque de desarrollo habrá carreras de Mario Kart (Switch, 4 jugadores de equipos distintos). Cada carrera reparte **+10 / +6 / +3 / +1** a la Copa de Retos del equipo del corredor. Participar es totalmente opcional — es para despejarse un rato.
 
 **Regla de validación:** un reto solo existe si un árbitro (Tomás o Mei) lo valida en el momento y queda registrado en el marcador con equipo, reto, hora y evidencia (screenshot o link al commit). Sin registro no hay puntos — así el veredicto final es auditable.
 

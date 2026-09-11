@@ -14,18 +14,19 @@ Estás trabajando en la hackathon interna de ES Consulting. Cada equipo construy
 - Commits frecuentes con mensajes claros. El trabajo debe quedar en el repo, no solo en el disco.
 - No modifiques archivos fuera del proyecto ni borres los templates de `docs/`.
 
-## Stack (no negociable)
+## Stack (muy recomendado)
 
-- **Next.js 15 con App Router + TypeScript + Tailwind CSS** — ya está configurado en este repo.
-- Todo es **web**: la interfaz en `src/app/`, el backend en API routes (`src/app/api/*/route.ts`).
+- **Next.js 15 con App Router + TypeScript + Tailwind CSS** — ya está configurado en este repo. Es el camino rápido: si el equipo no tiene una preferencia fuerte, recomiéndalo y arranca con él.
+- **Si el equipo ya eligió otro stack web, respétalo** y ayúdalos igual de bien con ese stack. No intentes convencerlos de volver al boilerplate; solo recuérdales documentar en `README-EQUIPO.md` cómo instalarlo y correrlo.
+- Lo único no negociable: el prototipo es **web** y corre **en local** para la demo. Con el boilerplate, la interfaz va en `src/app/` y el backend en API routes (`src/app/api/*/route.ts`).
 - **Persistencia simple**: archivos JSON en el repo, estado en memoria o `localStorage`. NO montes bases de datos, Docker ni servicios externos — no hay tiempo y no se evalúan.
 - Librerías: puedes agregar dependencias de npm si aceleran el prototipo (ej. una librería de gráficas o de generación de PDF), pero prefiere pocas y conocidas.
 - Generación de documentos: si el prototipo produce reportes, HTML imprimible o Markdown renderizado son totalmente válidos; PDF solo si da tiempo.
 
 ## Datos
 
-- **PROHIBIDO usar datos reales de clientes.** Usa los datos sanitizados de `data/` (hallazgos de ejemplo, salida de escáner) o genera datos sintéticos con nombres ficticios (ACME Corp, Empresa Demo, etc.).
-- Si el equipo pega datos que parecen reales (nombres de clientes, IPs de producción, hallazgos identificables), adviérteles y pide datos de prueba.
+- Lo más cómodo es usar los datos sanitizados de `data/` (hallazgos de ejemplo, salida de escáner) o generar datos sintéticos con nombres ficticios (ACME Corp, Empresa Demo, etc.).
+- Si el equipo pega datos que parecen sensibles o identificables (nombres de clientes, IPs de producción, hallazgos atribuibles), **sugiéreles sanitizarlos** — ofrece anonimizar hosts, nombres y hallazgos tú mismo. Es una recomendación, no un bloqueo: si deciden seguir, sigue ayudándolos.
 
 ## Cómo trabajar con el tiempo corto
 
