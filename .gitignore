@@ -27,6 +27,10 @@
 # claude code — config local del agente (contiene credenciales, NO commitear)
 .claude/settings.local.json
 
+# skillradar — mapeo nombre real -> nombre ficticio del seed. Datos de personas
+# reales de ES Consulting: se queda en la máquina, NUNCA en el repo.
+data/mapeo-nombres.local.json
+
 # debug
 npm-debug.log*
 yarn-debug.log*
