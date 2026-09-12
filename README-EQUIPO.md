@@ -150,8 +150,43 @@ repo y **este prototipo no los usa**.
   datos.
 - Gráficas: barras de una sola serie con el valor escrito al lado, y estados siempre con etiqueta de
   texto además del color — nada depende solo del color.
-- La ficha imprimible es HTML con estilos `print:` — se exporta a PDF desde el diálogo de impresión
-  del navegador.
+- La ficha imprimible es HTML: los tokens de color se redefinen contra el papel en un solo
+  `@media print` de `globals.css`, y se exporta a PDF desde el diálogo de impresión del navegador.
+
+## Paleta
+
+Los colores **no se escriben en las pantallas**: viven como tokens en
+[`src/app/globals.css`](src/app/globals.css). Están anclados en los cuatro colores que el sitio de ES
+Consulting publica con su referencia Pantone, y los demás pasos se derivaron en OKLCH manteniendo el
+tono del anclaje y moviendo solo la luminosidad.
+
+| Anclaje de marca | Hex | Dónde cae |
+|---|---|---|
+| Pantone 298 C | `#38bbdd` | `acento` — botones, barras, cifras destacadas |
+| Pantone 4146 C | `#18203b` | `panel` — la superficie de las tarjetas, y la tinta sobre papel |
+| Classic Blue | `#124d85` | `azul` — botón sobre hoja blanca |
+| Ultimate Gray | `#a2a3a4` | la luminosidad de `tinta-3`, los rótulos |
+
+| Familia de tokens | Para qué |
+|---|---|
+| `fondo` · `hueco` · `panel` · `panel-alto` | superficies, de la página al chip |
+| `linea-suave` · `linea` · `linea-fuerte` | divisor, borde de tarjeta, borde de control |
+| `tinta` · `tinta-2` · `tinta-3` · `tinta-4` | jerarquía de texto sobre oscuro |
+| `acento-claro` · `acento` · `acento-medio` · `acento-fuerte` | la rampa del cyan, un paso por superficie |
+| `bien` · `aviso` · `alerta` (+ `-fuerte` para papel) | **solo estado** |
+| `papel` · `tinta-papel` · `tinta-papel-2` · `tinta-papel-3` · `linea-papel` | la ficha y el CV, que son hoja blanca |
+
+Tres reglas, para que una pantalla nueva no rompa el conjunto:
+
+1. **Usa tokens, no colores crudos de Tailwind.** Un `bg-slate-800` o un `text-cyan-400` se ve
+   parecido pero no es la marca, y no se remapea al imprimir. Si falta un paso, agrégalo a `@theme`.
+2. **Un solo tono para lo que es magnitud** (barras, niveles): el largo o la cantidad llevan el dato.
+   Los tres colores de estado están reservados a estado y **siempre van con su etiqueta en texto**.
+3. **No inventes variantes `print:`.** La impresión ya tiene sus propios pasos validados contra papel
+   blanco en el `@media print`; una pantalla que usa tokens se imprime bien sin hacer nada.
+
+Cada paso se eligió por cómputo, no a ojo: contraste WCAG contra las tres superficies, y separación
+bajo protanopía/deuteranopía para el trío de estado (ΔE 13.6 en el tema oscuro, 8.7 en papel).
 
 ## Qué quedó pendiente
 
