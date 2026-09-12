@@ -1,23 +1,25 @@
 import { NIVEL_MAX } from "@/lib/tipos";
 
-/** Un color por nivel de la escala 0–3. Se usa igual en buscador y ficha. */
-const RELLENO_NIVEL: Record<number, string> = {
-  0: "bg-slate-500",
-  1: "bg-amber-400",
-  2: "bg-cyan-400",
-  3: "bg-emerald-400",
-};
-
+/**
+ * La palabra ya dice el nivel; el color solo la jerarquiza. Antes cada nivel
+ * tenía su tono — ámbar el 1, verde el 3 —, lo que le ponía semáforo a la
+ * habilidad de una persona (como si «básico» fuera una advertencia) y gastaba
+ * en una magnitud dos colores reservados para estado.
+ */
 const TEXTO_NIVEL: Record<number, string> = {
-  0: "text-slate-400",
-  1: "text-amber-300",
-  2: "text-cyan-300",
-  3: "text-emerald-300",
+  0: "text-tinta-4",
+  1: "text-tinta-3",
+  2: "text-tinta-2",
+  3: "text-acento-claro",
 };
 
 /**
  * Tres bloquecitos: cuántos están encendidos es el nivel. Se lee de un
  * vistazo al comparar candidatos, que es todo el punto del buscador.
+ *
+ * Un solo color para los encendidos — el dato lo lleva la cantidad, no el
+ * tono —, en el paso de la rampa que contrasta contra cada superficie: el cyan
+ * de marca sobre el tema oscuro, su paso oscuro sobre la hoja impresa.
  */
 export function NivelBarra({
   nivel,
@@ -26,16 +28,15 @@ export function NivelBarra({
   nivel: number;
   claro?: boolean;
 }) {
-  const vacio = claro ? "bg-slate-200" : "bg-slate-700";
+  const encendido = claro ? "bg-acento-fuerte" : "bg-acento";
+  const vacio = claro ? "bg-linea-papel" : "bg-panel-alto";
 
   return (
     <span className="inline-flex gap-[3px] align-middle">
       {Array.from({ length: NIVEL_MAX }, (_, i) => (
         <span
           key={i}
-          className={`h-3 w-2 rounded-sm ${
-            i < nivel ? RELLENO_NIVEL[nivel] : vacio
-          }`}
+          className={`h-3 w-2 rounded-sm ${i < nivel ? encendido : vacio}`}
         />
       ))}
     </span>
@@ -58,17 +59,17 @@ export function NivelChip({
     <span
       className={`inline-flex items-center gap-2 rounded-md border px-2.5 py-1 text-xs ${
         nivel > 0
-          ? "border-slate-600 bg-[#0d1538]"
-          : "border-slate-800 bg-[#0b1230] opacity-60"
+          ? "border-linea-fuerte bg-hueco"
+          : "border-linea-suave bg-fondo opacity-60"
       }`}
       title={`${etiqueta} — ${descripcion}`}
     >
       <NivelBarra nivel={nivel} />
-      <span className="font-semibold text-slate-100">{etiqueta}</span>
+      <span className="font-semibold text-tinta">{etiqueta}</span>
       <span className={TEXTO_NIVEL[nivel]}>{descripcion}</span>
       {certificacion ? (
         <span
-          className="rounded bg-emerald-400/15 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-emerald-300"
+          className="rounded bg-bien/15 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-bien"
           title={`Certificación vigente: ${certificacion}`}
         >
           ✓ Certificado
@@ -86,14 +87,25 @@ export function Disponibilidad({
   pct: number;
   claro?: boolean;
 }) {
-  const color =
-    pct >= 70 ? "bg-emerald-400" : pct >= 40 ? "bg-amber-400" : "bg-rose-400";
+  // Estado por umbral, y el % va escrito al lado: el color nunca va solo. Sobre
+  // papel se usan los pasos oscuros — los claros no se ven contra el blanco.
+  const color = claro
+    ? pct >= 70
+      ? "bg-bien-fuerte"
+      : pct >= 40
+        ? "bg-aviso-fuerte"
+        : "bg-alerta-fuerte"
+    : pct >= 70
+      ? "bg-bien"
+      : pct >= 40
+        ? "bg-aviso"
+        : "bg-alerta";
 
   return (
     <span className="inline-flex items-center gap-2">
       <span
         className={`h-1.5 w-20 overflow-hidden rounded-full ${
-          claro ? "bg-slate-200" : "bg-slate-700"
+          claro ? "bg-linea-papel" : "bg-panel-alto"
         }`}
       >
         <span
@@ -101,7 +113,7 @@ export function Disponibilidad({
           style={{ width: `${pct}%` }}
         />
       </span>
-      <span className={claro ? "text-slate-700" : "text-slate-300"}>
+      <span className={claro ? "text-tinta-papel-2" : "text-tinta-2"}>
         {pct}% disponible
       </span>
     </span>

@@ -49,35 +49,35 @@ export default async function Reporte({ searchParams }: PageProps<"/reporte">) {
     : "/buscar";
 
   return (
-    <main className="min-h-screen bg-white text-slate-900">
+    <main className="min-h-screen bg-papel text-tinta-papel">
       <div className="mx-auto flex max-w-3xl items-center justify-between gap-4 px-8 pt-6 print:hidden">
-        <Link href={volverA} className="text-sm text-cyan-700 hover:underline">
+        <Link href={volverA} className="text-sm text-acento-fuerte hover:underline">
           ← Volver al buscador
         </Link>
-        {personas.length > 0 ? <BotonImprimir /> : null}
+        {personas.length > 0 ? <BotonImprimir claro /> : null}
       </div>
 
       {personas.length === 0 ? (
         <div className="mx-auto max-w-3xl px-8 py-16">
           <h1 className="text-2xl font-bold">Ficha de capacidades</h1>
-          <p className="mt-3 text-slate-600">
+          <p className="mt-3 text-tinta-papel-2">
             No hay candidatos seleccionados. Volvé al buscador, marcá a las
             personas que quieras incluir y generá la ficha desde ahí.
           </p>
         </div>
       ) : (
         <article className="mx-auto max-w-3xl px-8 py-8 print:px-0 print:py-0">
-          <header className="border-b-2 border-slate-900 pb-4">
+          <header className="border-b-2 border-linea-papel pb-4">
             <div className="flex items-baseline justify-between gap-4">
-              <p className="text-xs font-bold uppercase tracking-[0.25em] text-slate-500">
+              <p className="text-xs font-bold uppercase tracking-[0.25em] text-tinta-papel-3">
                 ES Consulting · ProdigiES
               </p>
-              <p className="text-xs text-slate-500">{fechaLarga()}</p>
+              <p className="text-xs text-tinta-papel-3">{fechaLarga()}</p>
             </div>
             <h1 className="mt-2 text-3xl font-bold tracking-tight">
               Ficha de capacidades
             </h1>
-            <p className="mt-1 text-sm text-slate-600">
+            <p className="mt-1 text-sm text-tinta-papel-2">
               Anexo de propuesta — perfil del personal propuesto y su nivel en
               los requisitos de la oportunidad.
             </p>
@@ -85,13 +85,13 @@ export default async function Reporte({ searchParams }: PageProps<"/reporte">) {
 
           {resultado && resultado.requisitos.length > 0 ? (
             <section className="mt-6">
-              <h2 className="text-xs font-bold uppercase tracking-widest text-slate-500">
+              <h2 className="text-xs font-bold uppercase tracking-widest text-tinta-papel-3">
                 Requisitos de la oportunidad
               </h2>
               <p className="mt-1 text-lg font-semibold">
                 {resultado.requisitos.map((r) => r.etiqueta).join(" + ")}
               </p>
-              <p className="mt-1 text-xs text-slate-500">
+              <p className="mt-1 text-xs text-tinta-papel-3">
                 Consulta original: “{consulta}”
               </p>
             </section>
@@ -109,9 +109,9 @@ export default async function Reporte({ searchParams }: PageProps<"/reporte">) {
             ))}
           </div>
 
-          <footer className="mt-10 border-t border-slate-300 pt-4 text-xs text-slate-500">
+          <footer className="mt-10 border-t border-linea-papel pt-4 text-xs text-tinta-papel-3">
             <p>
-              <strong className="text-slate-700">Validación requerida:</strong>{" "}
+              <strong className="text-tinta-papel-2">Validación requerida:</strong>{" "}
               el líder del equipo confirma la disponibilidad real y Comercial
               valida el perfil antes de que esta ficha salga en una propuesta.
               ProdigiES propone; la gente decide.
@@ -152,18 +152,18 @@ function FichaPersona({
     .slice(0, 8);
 
   return (
-    <section className="break-inside-avoid rounded-lg border border-slate-300 p-5">
+    <section className="break-inside-avoid rounded-lg border border-linea-papel p-5">
       <div className="flex flex-wrap items-baseline justify-between gap-3">
         <div>
           <h2 className="text-xl font-bold">{persona.nombre}</h2>
-          <p className="text-sm text-slate-600">
+          <p className="text-sm text-tinta-papel-2">
             {persona.rol} · {persona.equipo}
           </p>
         </div>
         {candidato ? (
-          <p className="text-sm text-slate-600">
+          <p className="text-sm text-tinta-papel-2">
             Match{" "}
-            <strong className="text-lg text-slate-900">
+            <strong className="text-lg text-tinta-papel">
               {candidato.score}
             </strong>{" "}
             / 100
@@ -171,7 +171,7 @@ function FichaPersona({
         ) : null}
       </div>
 
-      <div className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-slate-600">
+      <div className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-tinta-papel-2">
         <Disponibilidad pct={persona.disponibilidad} claro />
         <span>Idiomas: {persona.idiomas.join(", ")}</span>
         <span>
@@ -186,7 +186,7 @@ function FichaPersona({
       {candidato ? (
         <table className="mt-4 w-full border-collapse text-sm">
           <thead>
-            <tr className="border-b border-slate-300 text-left text-xs uppercase tracking-wider text-slate-500">
+            <tr className="border-b border-linea-papel text-left text-xs uppercase tracking-wider text-tinta-papel-3">
               <th className="py-1.5 font-semibold">Requisito</th>
               <th className="py-1.5 font-semibold">Nivel</th>
               <th className="py-1.5 font-semibold">Certificación vigente</th>
@@ -196,7 +196,7 @@ function FichaPersona({
             {candidato.coberturas.map((cob) => (
               <tr
                 key={cob.requisito.etiqueta}
-                className="border-b border-slate-200"
+                className="border-b border-linea-papel"
               >
                 <td className="py-1.5">{cob.requisito.etiqueta}</td>
                 <td className="py-1.5">
@@ -207,7 +207,7 @@ function FichaPersona({
                     </span>
                   </span>
                 </td>
-                <td className="py-1.5 text-slate-600">
+                <td className="py-1.5 text-tinta-papel-2">
                   {cob.certificacion
                     ? `${cob.certificacion.nombre} (vence ${cob.certificacion.vence})`
                     : "—"}
@@ -221,7 +221,7 @@ function FichaPersona({
       {destacadas.length > 0 ? (
         <p className="mt-4 text-sm">
           <span className="font-semibold">Fortalezas (nivel 3):</span>{" "}
-          <span className="text-slate-700">
+          <span className="text-tinta-papel-2">
             {destacadas.map((s) => s.skill.nombre).join(", ")}
           </span>
         </p>
@@ -229,7 +229,7 @@ function FichaPersona({
 
       <p className="mt-2 text-sm">
         <span className="font-semibold">Certificaciones vigentes:</span>{" "}
-        <span className="text-slate-700">
+        <span className="text-tinta-papel-2">
           {vigentes.length > 0
             ? vigentes.map((c) => `${c.nombre} (${c.vence})`).join(", ")
             : "ninguna registrada"}

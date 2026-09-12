@@ -62,13 +62,13 @@ export default async function Carga({ searchParams }: PageProps<"/carga">) {
 
   return (
     <main className="mx-auto w-full max-w-6xl px-6 py-10">
-      <p className="text-xs uppercase tracking-[0.3em] text-cyan-400">
+      <p className="text-xs uppercase tracking-[0.3em] text-acento">
         Menú · Carga laboral
       </p>
       <h1 className="mt-2 text-3xl font-bold tracking-tight">
         Proyectos y cargabilidad
       </h1>
-      <p className="mt-2 max-w-3xl text-slate-300">
+      <p className="mt-2 max-w-3xl text-tinta-2">
         La disponibilidad de cada persona sale de aquí: es{" "}
         <strong>100% menos lo que tiene comprometido</strong> en proyectos en
         ejecución. Cuando PM asigna a alguien, su disponibilidad baja en el
@@ -77,11 +77,11 @@ export default async function Carga({ searchParams }: PageProps<"/carga">) {
 
       <form action="/carga" className="mt-6 flex flex-wrap items-end gap-3">
         <label className="text-xs">
-          <span className="block text-slate-400">Área</span>
+          <span className="block text-tinta-3">Área</span>
           <select
             name="area"
             defaultValue={areaFiltro}
-            className="mt-1 rounded-lg border border-slate-600 bg-[#111a42] px-3 py-2 text-sm text-slate-100 focus:border-cyan-400 focus:outline-none"
+            className="mt-1 rounded-lg border border-linea-fuerte bg-panel px-3 py-2 text-sm text-tinta focus:border-acento focus:outline-none"
           >
             <option value="">Todas</option>
             {EQUIPOS.map((e) => (
@@ -93,7 +93,7 @@ export default async function Carga({ searchParams }: PageProps<"/carga">) {
         </label>
         <button
           type="submit"
-          className="rounded-lg border border-slate-600 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400 hover:text-cyan-300"
+          className="rounded-lg border border-linea-fuerte px-4 py-2 text-sm font-semibold text-tinta-2 transition hover:border-acento hover:text-acento-claro"
         >
           Filtrar
         </button>
@@ -164,27 +164,27 @@ function TarjetaProyecto({ proyecto }: { proyecto: Proyecto }) {
         <div className="min-w-0">
           <Link
             href={`/proyecto/${proyecto.id}`}
-            className="font-bold underline-offset-4 hover:text-cyan-300 hover:underline"
+            className="font-bold underline-offset-4 hover:text-acento-claro hover:underline"
           >
             {proyecto.nombre}
           </Link>
-          <p className="text-sm text-slate-400">{proyecto.cliente}</p>
+          <p className="text-sm text-tinta-3">{proyecto.cliente}</p>
         </div>
         <Etiqueta tono={estado.tono}>{estado.etiqueta}</Etiqueta>
       </div>
 
-      <p className="mt-2 text-xs text-slate-500">
+      <p className="mt-2 text-xs text-tinta-4">
         {proyecto.area} · {proyecto.inicio} → {proyecto.fin}
       </p>
 
-      <p className="mt-3 text-sm text-slate-300">
+      <p className="mt-3 text-sm text-tinta-2">
         {proyecto.asignaciones.length}{" "}
         {proyecto.asignaciones.length === 1 ? "persona" : "personas"} ·{" "}
         {dedicacionTotal}% de dedicación acumulada
       </p>
 
       {proyecto.asignaciones.length === 0 ? (
-        <p className="mt-2 text-xs text-cyan-300">
+        <p className="mt-2 text-xs text-acento-claro">
           Sin equipo asignado — asignar recursos →
         </p>
       ) : null}
@@ -197,7 +197,7 @@ function FilaCarga({ fila }: { fila: CargaPersona }) {
   const ancho = Math.min(carga, 100);
 
   return (
-    <div className="rounded-xl border border-slate-700 bg-[#111a42] px-4 py-3">
+    <div className="rounded-xl border border-linea bg-panel px-4 py-3">
       <div className="flex flex-wrap items-center gap-3">
         <Avatar nombre={persona.nombre} foto={persona.foto} tamano="sm" />
 
@@ -205,30 +205,30 @@ function FilaCarga({ fila }: { fila: CargaPersona }) {
           <div className="flex flex-wrap items-baseline gap-x-3">
             <Link
               href={`/persona/${persona.id}?tab=proyectos`}
-              className="font-semibold underline-offset-4 hover:text-cyan-300 hover:underline"
+              className="font-semibold underline-offset-4 hover:text-acento-claro hover:underline"
             >
               {persona.nombre}
             </Link>
-            <span className="text-xs text-slate-400">
+            <span className="text-xs text-tinta-3">
               {persona.rol} · {persona.equipo}
             </span>
           </div>
 
           <div className="mt-2 flex items-center gap-3">
-            <span className="h-2.5 flex-1 overflow-hidden rounded bg-slate-800">
+            <span className="h-2.5 flex-1 overflow-hidden rounded bg-panel-alto">
               <span
                 className={`block h-full rounded-r ${
                   estado === "sobrecargada"
-                    ? "bg-rose-400"
+                    ? "bg-alerta"
                     : estado === "ajustada"
-                      ? "bg-amber-400"
-                      : "bg-cyan-400"
+                      ? "bg-aviso"
+                      : "bg-acento"
                 }`}
                 style={{ width: `${ancho}%` }}
               />
             </span>
-            <span className="w-28 shrink-0 text-right text-xs tabular-nums text-slate-400">
-              <strong className="text-slate-100">{carga}%</strong> ·{" "}
+            <span className="w-28 shrink-0 text-right text-xs tabular-nums text-tinta-3">
+              <strong className="text-tinta">{carga}%</strong> ·{" "}
               {persona.disponibilidad}% libre
             </span>
           </div>
@@ -238,16 +238,16 @@ function FilaCarga({ fila }: { fila: CargaPersona }) {
       </div>
 
       {asignaciones.length > 0 ? (
-        <ul className="mt-2 flex flex-wrap gap-x-4 gap-y-1 pl-12 text-xs text-slate-500">
+        <ul className="mt-2 flex flex-wrap gap-x-4 gap-y-1 pl-12 text-xs text-tinta-4">
           {asignaciones.map((a) => (
             <li key={a.proyecto.id}>
               <Link
                 href={`/proyecto/${a.proyecto.id}`}
-                className="hover:text-slate-300"
+                className="hover:text-tinta-2"
               >
                 {a.proyecto.nombre}
               </Link>{" "}
-              <span className="text-slate-400">{a.dedicacion}%</span>
+              <span className="text-tinta-3">{a.dedicacion}%</span>
             </li>
           ))}
         </ul>

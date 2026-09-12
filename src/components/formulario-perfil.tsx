@@ -113,7 +113,7 @@ export function FormularioPerfil({
 
       <button
         type="submit"
-        className="rounded-lg bg-cyan-400 px-5 py-2.5 font-bold text-[#0a1030] transition hover:bg-cyan-300"
+        className="rounded-lg bg-acento px-5 py-2.5 font-bold text-fondo transition hover:bg-acento-claro"
       >
         {etiquetaBoton}
       </button>
@@ -122,7 +122,7 @@ export function FormularioPerfil({
 }
 
 const ENTRADA =
-  "mt-1 w-full rounded-lg border border-slate-600 bg-[#111a42] px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:border-cyan-400 focus:outline-none";
+  "mt-1 w-full rounded-lg border border-linea-fuerte bg-panel px-3 py-2 text-sm text-tinta placeholder:text-tinta-4 focus:border-acento focus:outline-none";
 
 export function Campo({
   etiqueta,
@@ -135,8 +135,8 @@ export function Campo({
 }) {
   return (
     <label className="block text-sm">
-      <span className="font-semibold text-slate-200">{etiqueta}</span>
-      {nota ? <span className="ml-2 text-xs text-slate-500">{nota}</span> : null}
+      <span className="font-semibold text-tinta-2">{etiqueta}</span>
+      {nota ? <span className="ml-2 text-xs text-tinta-4">{nota}</span> : null}
       {children}
     </label>
   );

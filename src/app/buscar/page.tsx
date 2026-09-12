@@ -34,13 +34,13 @@ export default async function Buscar({ searchParams }: PageProps<"/buscar">) {
 
   return (
     <main className="mx-auto w-full max-w-5xl px-6 py-10">
-      <p className="text-xs uppercase tracking-[0.3em] text-cyan-400">
+      <p className="text-xs uppercase tracking-[0.3em] text-acento">
         Menú · Buscar skills
       </p>
       <h1 className="mt-2 text-3xl font-bold tracking-tight">
         ¿Quién de la casa puede hacer esto?
       </h1>
-      <p className="mt-2 text-slate-300">
+      <p className="mt-2 text-tinta-2">
         Escribe los requisitos de la licitación — solución, conocimiento o
         certificación — y te decimos quién califica, ordenado por match.
       </p>
@@ -53,23 +53,23 @@ export default async function Buscar({ searchParams }: PageProps<"/buscar">) {
           autoFocus
           placeholder="Infoblox · VAPT Web + inglés · ISO 27001 + redacción"
           aria-label="Requisitos de la licitación"
-          className="flex-1 rounded-lg border border-slate-600 bg-[#111a42] px-4 py-3 text-slate-100 placeholder:text-slate-500 focus:border-cyan-400 focus:outline-none"
+          className="flex-1 rounded-lg border border-linea-fuerte bg-panel px-4 py-3 text-tinta placeholder:text-tinta-4 focus:border-acento focus:outline-none"
         />
         <button
           type="submit"
-          className="rounded-lg bg-cyan-400 px-6 py-3 font-bold text-[#0a1030] transition hover:bg-cyan-300"
+          className="rounded-lg bg-acento px-6 py-3 font-bold text-fondo transition hover:bg-acento-claro"
         >
           Buscar talento
         </button>
       </form>
 
       <div className="mt-3 flex flex-wrap items-center gap-2 text-xs">
-        <span className="text-slate-500">Prueba con:</span>
+        <span className="text-tinta-4">Prueba con:</span>
         {EJEMPLOS.map((ejemplo) => (
           <Link
             key={ejemplo}
             href={`/buscar?q=${encodeURIComponent(ejemplo)}`}
-            className="rounded-full border border-slate-700 px-3 py-1 text-slate-300 transition hover:border-cyan-400 hover:text-cyan-300"
+            className="rounded-full border border-linea px-3 py-1 text-tinta-2 transition hover:border-acento hover:text-acento-claro"
           >
             {ejemplo}
           </Link>
@@ -86,16 +86,16 @@ export default async function Buscar({ searchParams }: PageProps<"/buscar">) {
               {resultado.candidatos.length === 1 ? "candidato" : "candidatos"}
             </h2>
             {resultado.requisitos.length > 0 ? (
-              <p className="text-sm text-slate-400">
+              <p className="text-sm text-tinta-3">
                 para{" "}
                 {resultado.requisitos.map((r, i) => (
                   <span key={r.etiqueta}>
                     {i > 0 ? " + " : ""}
-                    <span className="font-semibold text-cyan-300">
+                    <span className="font-semibold text-acento-claro">
                       {r.etiqueta}
                     </span>
                     {r.tipo === "idioma" ? (
-                      <span className="text-slate-500"> (idioma)</span>
+                      <span className="text-tinta-4"> (idioma)</span>
                     ) : null}
                   </span>
                 ))}
@@ -135,7 +135,7 @@ export default async function Buscar({ searchParams }: PageProps<"/buscar">) {
                 {resultado.candidatos.map((c, i) => (
                   <li
                     key={c.persona.id}
-                    className="rounded-xl border border-slate-700 bg-[#111a42] p-4 transition hover:border-slate-500"
+                    className="rounded-xl border border-linea bg-panel p-4 transition hover:border-linea-fuerte"
                   >
                     <div className="flex items-start gap-4">
                       <input
@@ -144,7 +144,7 @@ export default async function Buscar({ searchParams }: PageProps<"/buscar">) {
                         value={c.persona.id}
                         defaultChecked={i < 3}
                         aria-label={`Incluir a ${c.persona.nombre} en la ficha`}
-                        className="mt-1.5 h-4 w-4 shrink-0 accent-cyan-400"
+                        className="mt-1.5 h-4 w-4 shrink-0 accent-acento"
                       />
 
                       <Avatar
@@ -155,16 +155,16 @@ export default async function Buscar({ searchParams }: PageProps<"/buscar">) {
 
                       <div className="min-w-0 flex-1">
                         <div className="flex flex-wrap items-baseline gap-x-3">
-                          <span className="text-sm font-bold text-slate-500">
+                          <span className="text-sm font-bold text-tinta-4">
                             #{i + 1}
                           </span>
                           <Link
                             href={`/persona/${c.persona.id}?q=${encodeURIComponent(consulta)}`}
-                            className="text-lg font-bold text-slate-50 underline-offset-4 hover:text-cyan-300 hover:underline"
+                            className="text-lg font-bold text-tinta underline-offset-4 hover:text-acento-claro hover:underline"
                           >
                             {c.persona.nombre}
                           </Link>
-                          <span className="text-sm text-slate-400">
+                          <span className="text-sm text-tinta-3">
                             {c.persona.rol} · {c.persona.equipo}
                           </span>
                         </div>
@@ -184,7 +184,7 @@ export default async function Buscar({ searchParams }: PageProps<"/buscar">) {
                           ))}
                         </div>
 
-                        <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-1 text-xs text-slate-400">
+                        <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-1 text-xs text-tinta-3">
                           <Disponibilidad pct={c.persona.disponibilidad} />
                           <span>
                             cubre {c.requisitosCubiertos}/
@@ -199,10 +199,10 @@ export default async function Buscar({ searchParams }: PageProps<"/buscar">) {
                       </div>
 
                       <div className="shrink-0 text-right">
-                        <div className="text-3xl font-bold leading-none text-cyan-300">
+                        <div className="text-3xl font-bold leading-none text-acento-claro">
                           {c.score}
                         </div>
-                        <div className="text-[10px] uppercase tracking-widest text-slate-500">
+                        <div className="text-[10px] uppercase tracking-widest text-tinta-4">
                           match
                         </div>
                       </div>
@@ -211,13 +211,13 @@ export default async function Buscar({ searchParams }: PageProps<"/buscar">) {
                 ))}
               </ul>
 
-              <div className="sticky bottom-4 mt-6 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-cyan-400/30 bg-[#0d1538]/95 p-4 backdrop-blur">
-                <p className="text-sm text-slate-400">
+              <div className="sticky bottom-4 mt-6 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-acento/30 bg-hueco/95 p-4 backdrop-blur">
+                <p className="text-sm text-tinta-3">
                   Los candidatos marcados entran en la ficha de capacidades.
                 </p>
                 <button
                   type="submit"
-                  className="rounded-lg bg-cyan-400 px-5 py-2.5 font-bold text-[#0a1030] transition hover:bg-cyan-300"
+                  className="rounded-lg bg-acento px-5 py-2.5 font-bold text-fondo transition hover:bg-acento-claro"
                 >
                   Generar ficha de capacidades →
                 </button>
@@ -236,14 +236,14 @@ export default async function Buscar({ searchParams }: PageProps<"/buscar">) {
 
 function Leyenda({ escala }: { escala: EscalaNivel[] }) {
   return (
-    <div className="mt-8 rounded-lg border border-slate-800 bg-[#0d1538] p-4 text-xs text-slate-400">
-      <p className="font-bold uppercase tracking-wider text-slate-300">
+    <div className="mt-8 rounded-lg border border-linea-suave bg-hueco p-4 text-xs text-tinta-3">
+      <p className="font-bold uppercase tracking-wider text-tinta-2">
         Escala de la matriz de habilidades
       </p>
       <ul className="mt-2 grid gap-1 sm:grid-cols-2">
         {escala.map((e) => (
           <li key={e.nivel}>
-            <span className="font-bold text-slate-200">{e.nivel}</span> —{" "}
+            <span className="font-bold text-tinta-2">{e.nivel}</span> —{" "}
             {e.etiqueta}
           </li>
         ))}
@@ -282,9 +282,9 @@ function SinBusqueda({ escala }: { escala: EscalaNivel[] }) {
           },
         ].map((paso) => (
           <Panel key={paso.n}>
-            <span className="text-2xl font-bold text-cyan-400">{paso.n}</span>
+            <span className="text-2xl font-bold text-acento">{paso.n}</span>
             <h2 className="mt-1 font-bold">{paso.titulo}</h2>
-            <p className="mt-1 text-sm text-slate-400">{paso.detalle}</p>
+            <p className="mt-1 text-sm text-tinta-3">{paso.detalle}</p>
           </Panel>
         ))}
       </div>

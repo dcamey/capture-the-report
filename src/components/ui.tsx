@@ -3,8 +3,9 @@ import Link from "next/link";
 import { iniciales } from "@/lib/skills";
 
 /**
- * Piezas compartidas por las pantallas de la plataforma. Todo en el mismo
- * tema oscuro (#0a1030 fondo · #111a42 tarjeta · cyan-400 acento) para que
+ * Piezas compartidas por las pantallas de la plataforma. Ninguna trae colores
+ * propios: todas usan los tokens de la paleta de marca que define
+ * `src/app/globals.css` (`fondo` · `panel` · `acento` · `tinta-*`), para que
  * dashboard, perfiles, carga y reportes se lean como un solo producto.
  */
 
@@ -17,7 +18,7 @@ export function Panel({
 }) {
   return (
     <div
-      className={`rounded-xl border border-slate-700 bg-[#111a42] p-4 print:border-slate-300 print:bg-white ${className}`}
+      className={`rounded-xl border border-linea bg-panel p-4 ${className}`}
     >
       {children}
     </div>
@@ -37,7 +38,7 @@ export function TituloSeccion({
     <div className="flex flex-wrap items-end justify-between gap-3">
       <div>
         <h2 className="text-lg font-bold">{children}</h2>
-        {nota ? <p className="text-xs text-slate-500">{nota}</p> : null}
+        {nota ? <p className="text-xs text-tinta-4">{nota}</p> : null}
       </div>
       {accion}
     </div>
@@ -58,11 +59,11 @@ export function Tile({
 }) {
   const contenido = (
     <>
-      <p className="text-3xl font-bold leading-none text-cyan-300">{valor}</p>
-      <p className="mt-2 text-xs uppercase tracking-wider text-slate-400">
+      <p className="text-3xl font-bold leading-none text-acento-claro">{valor}</p>
+      <p className="mt-2 text-xs uppercase tracking-wider text-tinta-3">
         {etiqueta}
       </p>
-      {nota ? <p className="mt-1 text-xs text-slate-500">{nota}</p> : null}
+      {nota ? <p className="mt-1 text-xs text-tinta-4">{nota}</p> : null}
     </>
   );
 
@@ -70,7 +71,7 @@ export function Tile({
     return (
       <Link
         href={href}
-        className="block rounded-xl border border-slate-700 bg-[#111a42] p-4 transition hover:border-cyan-400/60"
+        className="block rounded-xl border border-linea bg-panel p-4 transition hover:border-acento/60"
       >
         {contenido}
       </Link>
@@ -83,6 +84,10 @@ export function Tile({
  * Barra horizontal de una sola serie: el largo es el dato y el valor va escrito
  * al lado, así que el color no carga información. Se usa igual en el top de
  * habilidades, en las fortalezas por área y en el comparativo mensual.
+ *
+ * No lleva variantes `print:`: los tokens ya se redefinen contra el papel. El
+ * `claro` es para las pantallas que son hoja blanca en el monitor — la ficha y
+ * el CV —, donde el relleno baja al paso oscuro de la rampa.
  */
 export function BarraDato({
   etiqueta,
@@ -106,12 +111,10 @@ export function BarraDato({
   return (
     <li className="grid grid-cols-[minmax(0,11rem)_1fr_auto] items-center gap-3 py-1 text-sm">
       <span
-        className={`truncate print:text-slate-800 ${
-          claro ? "text-slate-800" : "text-slate-200"
-        }`}
+        className={`truncate ${claro ? "text-tinta-papel" : "text-tinta-2"}`}
       >
         {href ? (
-          <Link href={href} className="hover:text-cyan-300 hover:underline">
+          <Link href={href} className="hover:text-acento-claro hover:underline">
             {etiqueta}
           </Link>
         ) : (
@@ -119,24 +122,22 @@ export function BarraDato({
         )}
       </span>
       <span
-        className={`h-2.5 overflow-hidden rounded print:bg-slate-200 ${
-          claro ? "bg-slate-200" : "bg-slate-800"
+        className={`h-2.5 overflow-hidden rounded ${
+          claro ? "bg-linea-papel" : "bg-panel-alto"
         }`}
       >
         <span
-          className={`block h-full rounded-r print:bg-cyan-700 ${claro ? "bg-cyan-600" : "bg-cyan-400"}`}
+          className={`block h-full rounded-r ${claro ? "bg-acento-medio" : "bg-acento"}`}
           style={{ width: `${Math.max(pct, valor > 0 ? 3 : 0)}%` }}
         />
       </span>
       <span
-        className={`whitespace-nowrap text-xs tabular-nums print:text-slate-600 ${
-          claro ? "text-slate-600" : "text-slate-400"
+        className={`whitespace-nowrap text-xs tabular-nums ${
+          claro ? "text-tinta-papel-2" : "text-tinta-3"
         }`}
       >
         <span
-          className={`font-bold print:text-slate-900 ${
-            claro ? "text-slate-900" : "text-slate-100"
-          }`}
+          className={`font-bold ${claro ? "text-tinta-papel" : "text-tinta"}`}
         >
           {valor}
           {sufijo}
@@ -177,7 +178,7 @@ export function Avatar({
   return (
     <span
       aria-hidden
-      className={`${medidas} grid shrink-0 place-items-center rounded-full border border-cyan-400/30 bg-cyan-400/10 font-bold text-cyan-300`}
+      className={`${medidas} grid shrink-0 place-items-center rounded-full border border-acento/30 bg-acento/10 font-bold text-acento-claro`}
     >
       {iniciales(nombre)}
     </span>
@@ -185,11 +186,11 @@ export function Avatar({
 }
 
 const TONOS = {
-  neutro: "border-slate-600 bg-slate-500/10 text-slate-300",
-  info: "border-cyan-400/40 bg-cyan-400/10 text-cyan-300",
-  bien: "border-emerald-400/40 bg-emerald-400/10 text-emerald-300",
-  aviso: "border-amber-400/40 bg-amber-400/10 text-amber-200",
-  alerta: "border-rose-400/40 bg-rose-400/10 text-rose-300",
+  neutro: "border-linea-fuerte bg-linea-fuerte/10 text-tinta-2",
+  info: "border-acento/40 bg-acento/10 text-acento-claro",
+  bien: "border-bien/40 bg-bien/10 text-bien",
+  aviso: "border-aviso/40 bg-aviso/10 text-aviso",
+  alerta: "border-alerta/40 bg-alerta/10 text-alerta",
 } as const;
 
 export type Tono = keyof typeof TONOS;
@@ -235,7 +236,7 @@ export function Aviso({
 /** Nota al pie del prototipo. Va en todas las pantallas, no en letra chica. */
 export function NotaDemo({ generado }: { generado: string }) {
   return (
-    <footer className="mt-14 border-t border-slate-800 pt-5 text-xs text-slate-500">
+    <footer className="mt-14 border-t border-linea-suave pt-5 text-xs text-tinta-4">
       <p>
         ProdigiES propone; la gente decide. El líder del equipo confirma la
         disponibilidad real y Comercial valida el perfil antes de que una ficha
@@ -244,7 +245,7 @@ export function NotaDemo({ generado }: { generado: string }) {
       <p className="mt-2">
         🔒 Datos de demostración — ninguna persona real de ES Consulting aparece
         con sus datos. Seed generado el {generado}; se restaura con{" "}
-        <code className="text-slate-400">npm run seed</code>.
+        <code className="text-tinta-3">npm run seed</code>.
       </p>
     </footer>
   );

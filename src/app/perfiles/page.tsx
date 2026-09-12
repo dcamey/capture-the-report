@@ -68,13 +68,13 @@ export default async function Perfiles({
     <main className="mx-auto w-full max-w-6xl px-6 py-10">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <p className="text-xs uppercase tracking-[0.3em] text-cyan-400">
+          <p className="text-xs uppercase tracking-[0.3em] text-acento">
             Menú · Perfiles
           </p>
           <h1 className="mt-2 text-3xl font-bold tracking-tight">
             Perfiles por área
           </h1>
-          <p className="mt-2 text-slate-300">
+          <p className="mt-2 text-tinta-2">
             {total} de {inventario.personas.length} colaboradores. Clic en una
             persona para ver su matriz de habilidades, sus certificaciones y sus
             proyectos.
@@ -82,7 +82,7 @@ export default async function Perfiles({
         </div>
         <Link
           href="/perfiles/nuevo"
-          className="rounded-lg bg-cyan-400 px-5 py-2.5 font-bold text-[#0a1030] transition hover:bg-cyan-300"
+          className="rounded-lg bg-acento px-5 py-2.5 font-bold text-fondo transition hover:bg-acento-claro"
         >
           + Nuevo colaborador
         </Link>
@@ -90,21 +90,21 @@ export default async function Perfiles({
 
       <form action="/perfiles" className="mt-6 flex flex-wrap items-end gap-3">
         <label className="flex-1 text-xs">
-          <span className="block text-slate-400">Buscar</span>
+          <span className="block text-tinta-3">Buscar</span>
           <input
             type="search"
             name="q"
             defaultValue={termino}
             placeholder="Nombre, posición, habilidad o certificación"
-            className="mt-1 w-full rounded-lg border border-slate-600 bg-[#111a42] px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:border-cyan-400 focus:outline-none"
+            className="mt-1 w-full rounded-lg border border-linea-fuerte bg-panel px-3 py-2 text-sm text-tinta placeholder:text-tinta-4 focus:border-acento focus:outline-none"
           />
         </label>
         <label className="text-xs">
-          <span className="block text-slate-400">Área</span>
+          <span className="block text-tinta-3">Área</span>
           <select
             name="area"
             defaultValue={areaFiltro}
-            className="mt-1 rounded-lg border border-slate-600 bg-[#111a42] px-3 py-2 text-sm text-slate-100 focus:border-cyan-400 focus:outline-none"
+            className="mt-1 rounded-lg border border-linea-fuerte bg-panel px-3 py-2 text-sm text-tinta focus:border-acento focus:outline-none"
           >
             <option value="">Todas</option>
             {EQUIPOS.map((e) => (
@@ -116,14 +116,14 @@ export default async function Perfiles({
         </label>
         <button
           type="submit"
-          className="rounded-lg border border-slate-600 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400 hover:text-cyan-300"
+          className="rounded-lg border border-linea-fuerte px-4 py-2 text-sm font-semibold text-tinta-2 transition hover:border-acento hover:text-acento-claro"
         >
           Filtrar
         </button>
         {termino || areaFiltro ? (
           <Link
             href="/perfiles"
-            className="py-2 text-sm text-slate-400 hover:text-slate-200"
+            className="py-2 text-sm text-tinta-3 hover:text-tinta-2"
           >
             limpiar
           </Link>
@@ -138,16 +138,16 @@ export default async function Perfiles({
 
           return (
             <section key={areaActual}>
-              <div className="flex items-baseline justify-between gap-3 border-b border-slate-800 pb-2">
+              <div className="flex items-baseline justify-between gap-3 border-b border-linea-suave pb-2">
                 <h2 className="text-xl font-bold">{areaActual}</h2>
-                <p className="text-sm text-slate-500">
+                <p className="text-sm text-tinta-4">
                   {personas.length}{" "}
                   {personas.length === 1 ? "colaborador" : "colaboradores"}
                 </p>
               </div>
 
               {personas.length === 0 ? (
-                <p className="mt-4 text-sm text-slate-500">
+                <p className="mt-4 text-sm text-tinta-4">
                   Nadie de esta área calza con el filtro.
                 </p>
               ) : (
@@ -198,11 +198,11 @@ function Tarjeta({
         <div className="min-w-0 flex-1">
           <Link
             href={`/persona/${persona.id}`}
-            className="font-bold underline-offset-4 hover:text-cyan-300 hover:underline"
+            className="font-bold underline-offset-4 hover:text-acento-claro hover:underline"
           >
             {persona.nombre}
           </Link>
-          <p className="truncate text-sm text-slate-400">{persona.rol}</p>
+          <p className="truncate text-sm text-tinta-3">{persona.rol}</p>
           <div className="mt-1.5 flex flex-wrap gap-1.5">
             {persona.carga === 0 ? (
               <Etiqueta tono="bien">En banca</Etiqueta>
@@ -216,24 +216,24 @@ function Tarjeta({
         </div>
       </div>
 
-      <div className="mt-3 text-xs text-slate-400">
+      <div className="mt-3 text-xs text-tinta-3">
         <Disponibilidad pct={persona.disponibilidad} />
       </div>
 
       <ul className="mt-3 space-y-1 text-xs">
         {fuertes.map((ps) => (
           <li key={ps.skillId} className="flex justify-between gap-2">
-            <span className="truncate text-slate-300">
+            <span className="truncate text-tinta-2">
               {nombrePorId.get(ps.skillId) ?? ps.skillId}
             </span>
-            <span className="shrink-0 text-slate-500">
+            <span className="shrink-0 text-tinta-4">
               {nivelCorto(inventario.escala, ps.nivel)}
             </span>
           </li>
         ))}
       </ul>
 
-      <p className="mt-3 border-t border-slate-800 pt-2 text-xs text-slate-500">
+      <p className="mt-3 border-t border-linea-suave pt-2 text-xs text-tinta-4">
         Punteo {total} · {vigentes.length}{" "}
         {vigentes.length === 1 ? "certificación" : "certificaciones"} vigentes
       </p>
@@ -241,13 +241,13 @@ function Tarjeta({
       <div className="mt-3 flex gap-3 text-xs">
         <Link
           href={`/persona/${persona.id}`}
-          className="text-cyan-400 hover:text-cyan-300"
+          className="text-acento hover:text-acento-claro"
         >
           ver perfil →
         </Link>
         <Link
           href={`/persona/${persona.id}/cv`}
-          className="text-slate-400 hover:text-slate-200"
+          className="text-tinta-3 hover:text-tinta-2"
         >
           descargar CV
         </Link>

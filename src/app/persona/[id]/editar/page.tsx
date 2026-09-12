@@ -46,18 +46,18 @@ export default async function EditarPersona({
     <main className="mx-auto w-full max-w-5xl px-6 py-10">
       <Link
         href={`/persona/${persona.id}`}
-        className="text-sm text-cyan-400 hover:text-cyan-300"
+        className="text-sm text-acento hover:text-acento-claro"
       >
         ← Volver al perfil de {persona.nombre}
       </Link>
 
-      <p className="mt-6 text-xs uppercase tracking-[0.3em] text-cyan-400">
+      <p className="mt-6 text-xs uppercase tracking-[0.3em] text-acento">
         Menú · Perfiles · Edición
       </p>
       <h1 className="mt-2 text-3xl font-bold tracking-tight">
         {persona.nombre}
       </h1>
-      <p className="mt-1 text-slate-400">
+      <p className="mt-1 text-tinta-3">
         {persona.rol} · {persona.equipo}
       </p>
 
@@ -69,7 +69,7 @@ export default async function EditarPersona({
         </div>
       ) : null}
 
-      <nav className="mt-6 flex gap-1 border-b border-slate-800">
+      <nav className="mt-6 flex gap-1 border-b border-linea-suave">
         {TABS.map((t) => (
           <Link
             key={t.id}
@@ -77,8 +77,8 @@ export default async function EditarPersona({
             aria-current={t.id === activa ? "page" : undefined}
             className={`-mb-px border-b-2 px-4 py-2 text-sm transition ${
               t.id === activa
-                ? "border-cyan-400 font-bold text-cyan-300"
-                : "border-transparent text-slate-400 hover:text-slate-100"
+                ? "border-acento font-bold text-acento-claro"
+                : "border-transparent text-tinta-3 hover:text-tinta"
             }`}
           >
             {t.etiqueta}
@@ -122,7 +122,7 @@ function Calificar({
 
           return (
             <section key={categoria.id}>
-              <h3 className="text-sm font-bold uppercase tracking-wider text-slate-300">
+              <h3 className="text-sm font-bold uppercase tracking-wider text-tinta-2">
                 {categoria.nombre}
               </h3>
               <ul className="mt-2 grid gap-2 sm:grid-cols-2">
@@ -131,11 +131,11 @@ function Calificar({
                   return (
                     <li
                       key={skill.id}
-                      className="flex items-center justify-between gap-3 rounded-lg border border-slate-700 bg-[#111a42] px-3 py-2"
+                      className="flex items-center justify-between gap-3 rounded-lg border border-linea bg-panel px-3 py-2"
                     >
                       <label
                         htmlFor={`nivel-${skill.id}`}
-                        className="min-w-0 flex-1 truncate text-sm text-slate-200"
+                        className="min-w-0 flex-1 truncate text-sm text-tinta-2"
                       >
                         {skill.nombre}
                       </label>
@@ -145,7 +145,7 @@ function Calificar({
                         name={`nivel-${skill.id}`}
                         defaultValue={nivel}
                         aria-label={`Nivel de ${skill.nombre}`}
-                        className="shrink-0 rounded-md border border-slate-600 bg-[#0d1538] px-2 py-1 text-xs text-slate-100 focus:border-cyan-400 focus:outline-none"
+                        className="shrink-0 rounded-md border border-linea-fuerte bg-hueco px-2 py-1 text-xs text-tinta focus:border-acento focus:outline-none"
                       >
                         {inventario.escala.map((e) => (
                           <option key={e.nivel} value={e.nivel}>
@@ -162,15 +162,15 @@ function Calificar({
         })}
       </div>
 
-      <div className="sticky bottom-4 mt-6 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-cyan-400/30 bg-[#0d1538]/95 p-4 backdrop-blur">
-        <p className="text-sm text-slate-400">
+      <div className="sticky bottom-4 mt-6 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-acento/30 bg-hueco/95 p-4 backdrop-blur">
+        <p className="text-sm text-tinta-3">
           {inventario.escala
             .map((e) => `${e.nivel} ${nivelEtiqueta(inventario.escala, e.nivel)}`)
             .join(" · ")}
         </p>
         <button
           type="submit"
-          className="rounded-lg bg-cyan-400 px-5 py-2.5 font-bold text-[#0a1030] transition hover:bg-cyan-300"
+          className="rounded-lg bg-acento px-5 py-2.5 font-bold text-fondo transition hover:bg-acento-claro"
         >
           Guardar calificación
         </button>
@@ -197,11 +197,11 @@ function Certificaciones({ persona }: { persona: Persona }) {
             return (
               <li
                 key={cert.nombre}
-                className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-slate-700 bg-[#111a42] px-4 py-3"
+                className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-linea bg-panel px-4 py-3"
               >
                 <div className="min-w-0">
                   <p className="font-semibold">{cert.nombre}</p>
-                  <p className="text-xs text-slate-400">
+                  <p className="text-xs text-tinta-3">
                     emitida {cert.emitida} · vence {cert.vence} ·{" "}
                     {cert.archivo ?? "sin adjunto"}
                   </p>
@@ -223,7 +223,7 @@ function Certificaciones({ persona }: { persona: Persona }) {
                     <input type="hidden" name="nombre" value={cert.nombre} />
                     <button
                       type="submit"
-                      className="text-xs text-rose-300 hover:text-rose-200"
+                      className="text-xs text-alerta hover:text-alerta"
                     >
                       eliminar
                     </button>
@@ -234,14 +234,14 @@ function Certificaciones({ persona }: { persona: Persona }) {
           })}
         </ul>
       ) : (
-        <p className="mt-4 text-sm text-slate-500">
+        <p className="mt-4 text-sm text-tinta-4">
           Sin certificaciones registradas.
         </p>
       )}
 
       <form
         action={agregarCertificacion}
-        className="mt-8 max-w-2xl space-y-4 rounded-xl border border-slate-700 bg-[#0d1538] p-5"
+        className="mt-8 max-w-2xl space-y-4 rounded-xl border border-linea bg-hueco p-5"
       >
         <input type="hidden" name="id" value={persona.id} />
         <h3 className="font-bold">Agregar certificación</h3>
@@ -277,7 +277,7 @@ function Certificaciones({ persona }: { persona: Persona }) {
 
         <button
           type="submit"
-          className="rounded-lg bg-cyan-400 px-5 py-2.5 font-bold text-[#0a1030] transition hover:bg-cyan-300"
+          className="rounded-lg bg-acento px-5 py-2.5 font-bold text-fondo transition hover:bg-acento-claro"
         >
           Agregar certificación
         </button>

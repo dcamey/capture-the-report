@@ -78,16 +78,16 @@ export default async function Reportes({
 
   return (
     <main className="mx-auto w-full max-w-5xl px-6 py-10 print:max-w-none print:px-0 print:py-0">
-      <p className="text-xs uppercase tracking-[0.3em] text-cyan-400 print:text-slate-500">
+      <p className="text-xs uppercase tracking-[0.3em] text-acento print:text-tinta-4">
         Menú · Reportes
       </p>
 
       <div className="mt-2 flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight print:text-slate-900">
+          <h1 className="text-3xl font-bold tracking-tight">
             Reporte de {elegida}
           </h1>
-          <p className="mt-2 max-w-2xl text-slate-300 print:text-slate-700">
+          <p className="mt-2 max-w-2xl text-tinta-2">
             Fortalezas, deficiencias y en qué conviene invertir. Se lee por área
             porque el catálogo es común: un skill de GRC no es una brecha de
             Ingeniería del mismo modo que lo es de Consulting.
@@ -106,8 +106,8 @@ export default async function Reportes({
             aria-current={e === elegida ? "page" : undefined}
             className={`rounded-full border px-4 py-1.5 text-sm transition ${
               e === elegida
-                ? "border-cyan-400 bg-cyan-400/10 font-bold text-cyan-300"
-                : "border-slate-700 text-slate-300 hover:border-cyan-400 hover:text-cyan-300"
+                ? "border-acento bg-acento/10 font-bold text-acento-claro"
+                : "border-linea text-tinta-2 hover:border-acento hover:text-acento-claro"
             }`}
           >
             {e}
@@ -139,7 +139,7 @@ export default async function Reportes({
           Fortalezas de {elegida}
         </TituloSeccion>
         {fortalezas.length === 0 ? (
-          <p className="mt-3 text-sm text-slate-500">
+          <p className="mt-3 text-sm text-tinta-4">
             El área todavía no tiene habilidades calificadas.
           </p>
         ) : (
@@ -163,7 +163,7 @@ export default async function Reportes({
           Deficiencias de {elegida}
         </TituloSeccion>
         {brechas.length === 0 ? (
-          <p className="mt-3 text-sm text-slate-500">
+          <p className="mt-3 text-sm text-tinta-4">
             Sin brechas: todo el catálogo tiene al menos dos personas, un
             avanzado y una certificación vigente.
           </p>
@@ -177,7 +177,7 @@ export default async function Reportes({
           </ul>
         )}
         {brechas.length > 12 ? (
-          <p className="mt-3 text-xs text-slate-500">
+          <p className="mt-3 text-xs text-tinta-4">
             …y {brechas.length - 12} más de menor prioridad.
           </p>
         ) : null}
@@ -195,7 +195,7 @@ export default async function Reportes({
           Dónde invertir
         </TituloSeccion>
         {inversiones.length === 0 ? (
-          <p className="mt-3 text-sm text-slate-500">
+          <p className="mt-3 text-sm text-tinta-4">
             No hay recomendaciones pendientes para esta área.
           </p>
         ) : (
@@ -218,16 +218,16 @@ export default async function Reportes({
             {enRiesgo.map((aviso) => (
               <li
                 key={`${aviso.persona.id}-${aviso.certificacion.nombre}`}
-                className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-700 bg-[#111a42] px-4 py-3 print:border-slate-300 print:bg-white"
+                className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-linea bg-panel px-4 py-3"
               >
                 <div className="min-w-0">
                   <Link
                     href={`/persona/${aviso.persona.id}?tab=certificaciones`}
-                    className="font-semibold underline-offset-4 hover:text-cyan-300 hover:underline"
+                    className="font-semibold underline-offset-4 hover:text-acento-claro hover:underline"
                   >
                     {aviso.persona.nombre}
                   </Link>
-                  <p className="text-xs text-slate-400 print:text-slate-600">
+                  <p className="text-xs text-tinta-3">
                     {aviso.certificacion.nombre} · vence{" "}
                     {aviso.certificacion.vence}
                   </p>
@@ -249,7 +249,7 @@ export default async function Reportes({
           accion={
             <Link
               href={`/carga?area=${encodeURIComponent(elegida)}`}
-              className="text-sm text-cyan-400 hover:text-cyan-300 print:hidden"
+              className="text-sm text-acento hover:text-acento-claro print:hidden"
             >
               Ver carga laboral →
             </Link>
@@ -270,7 +270,7 @@ export default async function Reportes({
             />
           ))}
         </ul>
-        <ul className="mt-4 space-y-1 text-xs text-slate-500 print:hidden">
+        <ul className="mt-4 space-y-1 text-xs text-tinta-4 print:hidden">
           {carga
             .filter((f) => f.estado === "sobrecargada")
             .map((f) => (
@@ -304,25 +304,25 @@ function FilaBrecha({ brecha }: { brecha: Brecha }) {
   const motivo = textoMotivo(brecha.motivo);
 
   return (
-    <div className="rounded-xl border border-slate-700 bg-[#111a42] px-4 py-3 print:border-slate-300 print:bg-white">
+    <div className="rounded-xl border border-linea bg-panel px-4 py-3">
       <div className="flex flex-wrap items-baseline justify-between gap-3">
         <div className="min-w-0">
           <Link
             href={`/buscar?q=${encodeURIComponent(brecha.skill.nombre)}`}
-            className="font-semibold underline-offset-4 hover:text-cyan-300 hover:underline"
+            className="font-semibold underline-offset-4 hover:text-acento-claro hover:underline"
           >
             {brecha.skill.nombre}
           </Link>
-          <span className="ml-2 text-xs text-slate-500">
+          <span className="ml-2 text-xs text-tinta-4">
             {CATEGORIAS.find((c) => c.id === brecha.skill.categoria)?.nombre}
           </span>
         </div>
         <Etiqueta tono={TONO_MOTIVO[brecha.motivo]}>{motivo.etiqueta}</Etiqueta>
       </div>
-      <p className="mt-1 text-sm text-slate-400 print:text-slate-600">
+      <p className="mt-1 text-sm text-tinta-3">
         {motivo.nota}
       </p>
-      <p className="mt-1 text-xs text-slate-500">
+      <p className="mt-1 text-xs text-tinta-4">
         {brecha.personas} personas lo tienen · {brecha.avanzados} avanzados ·{" "}
         {brecha.certificados} con certificación vigente
       </p>
@@ -333,7 +333,7 @@ function FilaBrecha({ brecha }: { brecha: Brecha }) {
 function Historico({ filas }: { filas: FilaHistorial[] }) {
   if (filas.length === 0) {
     return (
-      <p className="mt-3 text-sm text-slate-500">Sin histórico registrado.</p>
+      <p className="mt-3 text-sm text-tinta-4">Sin histórico registrado.</p>
     );
   }
 
@@ -355,8 +355,8 @@ function Historico({ filas }: { filas: FilaHistorial[] }) {
                 <span
                   className={
                     fila.delta > 0
-                      ? "text-emerald-300 print:text-emerald-700"
-                      : "text-rose-300 print:text-rose-700"
+                      ? "text-bien"
+                      : "text-alerta"
                   }
                 >
                   {signo(fila.delta)} vs. mes anterior
@@ -373,7 +373,7 @@ function Historico({ filas }: { filas: FilaHistorial[] }) {
             Punteo por categoría y mes del área
           </caption>
           <thead>
-            <tr className="text-left text-xs uppercase tracking-wider text-slate-500">
+            <tr className="text-left text-xs uppercase tracking-wider text-tinta-4">
               <th scope="col" className="py-2 pr-4 font-semibold">
                 Mes
               </th>
@@ -389,22 +389,22 @@ function Historico({ filas }: { filas: FilaHistorial[] }) {
           </thead>
           <tbody className="tabular-nums">
             {filas.map((fila) => (
-              <tr key={fila.mes} className="border-t border-slate-800">
+              <tr key={fila.mes} className="border-t border-linea-suave">
                 <th
                   scope="row"
-                  className="py-2 pr-4 text-left font-normal text-slate-300 print:text-slate-700"
+                  className="py-2 pr-4 text-left font-normal text-tinta-2"
                 >
                   {fila.mes}
                 </th>
                 {CATEGORIAS.map((c) => (
                   <td
                     key={c.id}
-                    className="py-2 pr-4 text-slate-400 print:text-slate-600"
+                    className="py-2 pr-4 text-tinta-3"
                   >
                     {fila.punteos[c.id]}
                   </td>
                 ))}
-                <td className="py-2 font-bold text-slate-100 print:text-slate-900">
+                <td className="py-2 font-bold text-tinta">
                   {fila.total}
                 </td>
               </tr>
@@ -425,7 +425,7 @@ function TarjetaInversion({ inversion }: { inversion: Inversion }) {
           {inversion.accion}
         </Etiqueta>
       </div>
-      <p className="mt-1 text-sm text-slate-400 print:text-slate-600">
+      <p className="mt-1 text-sm text-tinta-3">
         {inversion.motivo}
       </p>
 
@@ -437,11 +437,11 @@ function TarjetaInversion({ inversion }: { inversion: Inversion }) {
               <div className="min-w-0">
                 <Link
                   href={`/persona/${persona.id}`}
-                  className="font-semibold underline-offset-4 hover:text-cyan-300 hover:underline"
+                  className="font-semibold underline-offset-4 hover:text-acento-claro hover:underline"
                 >
                   {persona.nombre}
                 </Link>
-                <p className="text-xs text-slate-500">
+                <p className="text-xs text-tinta-4">
                   {persona.rol} · {persona.disponibilidad}% disponible
                 </p>
               </div>
@@ -449,7 +449,7 @@ function TarjetaInversion({ inversion }: { inversion: Inversion }) {
           ))}
         </ul>
       ) : (
-        <p className="mt-3 text-xs text-slate-500">
+        <p className="mt-3 text-xs text-tinta-4">
           Nadie del área lo tiene: hay que capacitar desde cero o contratar.
         </p>
       )}

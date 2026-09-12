@@ -14,17 +14,17 @@ export const metadata = {
 export default function NuevoColaborador() {
   return (
     <main className="mx-auto w-full max-w-5xl px-6 py-10">
-      <Link href="/perfiles" className="text-sm text-cyan-400 hover:text-cyan-300">
+      <Link href="/perfiles" className="text-sm text-acento hover:text-acento-claro">
         ← Volver a perfiles
       </Link>
 
-      <p className="mt-6 text-xs uppercase tracking-[0.3em] text-cyan-400">
+      <p className="mt-6 text-xs uppercase tracking-[0.3em] text-acento">
         Menú · Perfiles · Alta
       </p>
       <h1 className="mt-2 text-3xl font-bold tracking-tight">
         Nuevo colaborador
       </h1>
-      <p className="mt-2 max-w-2xl text-slate-300">
+      <p className="mt-2 max-w-2xl text-tinta-2">
         Lo que RRHH registra en la incorporación. Primero los datos del perfil;
         después se califican sus habilidades y se cargan sus certificaciones.
       </p>

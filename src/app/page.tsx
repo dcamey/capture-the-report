@@ -42,13 +42,13 @@ export default async function Dashboard() {
 
   return (
     <main className="mx-auto w-full max-w-6xl px-6 py-10">
-      <p className="text-xs uppercase tracking-[0.3em] text-cyan-400">
+      <p className="text-xs uppercase tracking-[0.3em] text-acento">
         ES Consulting · Equipo 05
       </p>
       <h1 className="mt-2 text-3xl font-bold tracking-tight">
         Gestión de habilidades y cargabilidad
       </h1>
-      <p className="mt-2 max-w-3xl text-slate-300">
+      <p className="mt-2 max-w-3xl text-tinta-2">
         Una sola base de talento para las tres áreas: Comercial encuentra a quién
         proponer, PM ve la carga antes de asignar y RRHH ve dónde están las
         brechas.
@@ -60,11 +60,11 @@ export default async function Dashboard() {
           name="q"
           placeholder="Busca una solución, un conocimiento o una certificación: Infoblox, VAPT Web + inglés…"
           aria-label="Buscar habilidades"
-          className="flex-1 rounded-lg border border-slate-600 bg-[#111a42] px-4 py-3 text-slate-100 placeholder:text-slate-500 focus:border-cyan-400 focus:outline-none"
+          className="flex-1 rounded-lg border border-linea-fuerte bg-panel px-4 py-3 text-tinta placeholder:text-tinta-4 focus:border-acento focus:outline-none"
         />
         <button
           type="submit"
-          className="rounded-lg bg-cyan-400 px-6 py-3 font-bold text-[#0a1030] transition hover:bg-cyan-300"
+          className="rounded-lg bg-acento px-6 py-3 font-bold text-fondo transition hover:bg-acento-claro"
         >
           Buscar talento
         </button>
@@ -107,16 +107,16 @@ export default async function Dashboard() {
               <li key={proyecto.id}>
                 <Link
                   href={`/proyecto/${proyecto.id}`}
-                  className="block rounded-xl border border-cyan-400/30 bg-[#111a42] p-4 transition hover:border-cyan-400"
+                  className="block rounded-xl border border-acento/30 bg-panel p-4 transition hover:border-acento"
                 >
                   <div className="flex items-baseline justify-between gap-3">
                     <p className="font-bold">{proyecto.nombre}</p>
                     <Etiqueta tono="info">{proyecto.area}</Etiqueta>
                   </div>
-                  <p className="mt-1 text-sm text-slate-400">
+                  <p className="mt-1 text-sm text-tinta-3">
                     {proyecto.cliente} · arranca {proyecto.inicio}
                   </p>
-                  <p className="mt-2 text-sm text-cyan-300">
+                  <p className="mt-2 text-sm text-acento-claro">
                     Buscar quién califica →
                   </p>
                 </Link>
@@ -133,36 +133,36 @@ export default async function Dashboard() {
               <h2 className="font-bold">{area.area}</h2>
               <Link
                 href={`/perfiles?area=${encodeURIComponent(area.area)}`}
-                className="text-xs text-cyan-400 hover:text-cyan-300"
+                className="text-xs text-acento hover:text-acento-claro"
               >
                 ver perfiles →
               </Link>
             </div>
 
             <dl className="mt-3 grid grid-cols-2 gap-y-2 text-sm">
-              <dt className="text-slate-400">Colaboradores</dt>
+              <dt className="text-tinta-3">Colaboradores</dt>
               <dd className="text-right font-bold tabular-nums">
                 {area.personas}
               </dd>
-              <dt className="text-slate-400">Proyectos en ejecución</dt>
+              <dt className="text-tinta-3">Proyectos en ejecución</dt>
               <dd className="text-right font-bold tabular-nums">
                 {area.proyectosEnEjecucion}
               </dd>
-              <dt className="text-slate-400">Oportunidades</dt>
+              <dt className="text-tinta-3">Oportunidades</dt>
               <dd className="text-right font-bold tabular-nums">
                 {area.oportunidades}
               </dd>
-              <dt className="text-slate-400">Carga promedio</dt>
+              <dt className="text-tinta-3">Carga promedio</dt>
               <dd className="text-right font-bold tabular-nums">
                 {area.cargaPromedio}%
               </dd>
-              <dt className="text-slate-400">En banca</dt>
+              <dt className="text-tinta-3">En banca</dt>
               <dd className="text-right font-bold tabular-nums">
                 {area.enBanca}
               </dd>
             </dl>
 
-            <p className="mt-3 border-t border-slate-700 pt-3 text-xs text-slate-500">
+            <p className="mt-3 border-t border-linea pt-3 text-xs text-tinta-4">
               Punteo —{" "}
               {CATEGORIAS.map(
                 (c) => `${c.nombre.toLowerCase()} ${area.punteos[c.id]}`,
@@ -193,7 +193,7 @@ export default async function Dashboard() {
               />
             ))}
           </ul>
-          <p className="mt-3 text-xs text-slate-500">
+          <p className="mt-3 text-xs text-tinta-4">
             Clic en una habilidad para ver quién la tiene y con qué nivel.
           </p>
         </Panel>
@@ -204,7 +204,7 @@ export default async function Dashboard() {
             accion={
               <Link
                 href="/reportes"
-                className="text-xs text-cyan-400 hover:text-cyan-300"
+                className="text-xs text-acento hover:text-acento-claro"
               >
                 reporte completo →
               </Link>
@@ -214,11 +214,11 @@ export default async function Dashboard() {
           </TituloSeccion>
 
           {avisos.length === 0 ? (
-            <p className="mt-4 text-sm text-slate-400">
+            <p className="mt-4 text-sm text-tinta-3">
               Ninguna certificación vence en la ventana de planificación.
             </p>
           ) : (
-            <ul className="mt-4 divide-y divide-slate-800">
+            <ul className="mt-4 divide-y divide-linea-suave">
               {avisos.slice(0, 8).map((aviso) => (
                 <li
                   key={`${aviso.persona.id}-${aviso.certificacion.nombre}`}
@@ -232,11 +232,11 @@ export default async function Dashboard() {
                   <div className="min-w-0 flex-1">
                     <Link
                       href={`/persona/${aviso.persona.id}`}
-                      className="text-sm font-semibold hover:text-cyan-300 hover:underline"
+                      className="text-sm font-semibold hover:text-acento-claro hover:underline"
                     >
                       {aviso.persona.nombre}
                     </Link>
-                    <p className="truncate text-xs text-slate-400">
+                    <p className="truncate text-xs text-tinta-3">
                       {aviso.certificacion.nombre}
                     </p>
                   </div>

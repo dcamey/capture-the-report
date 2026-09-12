@@ -32,13 +32,13 @@ export default async function Catalogo({
 
   return (
     <main className="mx-auto w-full max-w-5xl px-6 py-10">
-      <p className="text-xs uppercase tracking-[0.3em] text-cyan-400">
+      <p className="text-xs uppercase tracking-[0.3em] text-acento">
         Menú · Catálogo
       </p>
       <h1 className="mt-2 text-3xl font-bold tracking-tight">
         Habilidades que medimos
       </h1>
-      <p className="mt-2 max-w-3xl text-slate-300">
+      <p className="mt-2 max-w-3xl text-tinta-2">
         La matriz se califica contra esta lista, con la escala{" "}
         <strong>0 a 3</strong>. Si aparece una solución nueva de fabricante, se
         agrega aquí y desde ese momento se puede calificar y buscar.
@@ -70,7 +70,7 @@ export default async function Catalogo({
 
         <form
           action={crearSkill}
-          className="mt-4 flex flex-wrap items-end gap-3 rounded-xl border border-slate-700 bg-[#0d1538] p-5"
+          className="mt-4 flex flex-wrap items-end gap-3 rounded-xl border border-linea bg-hueco p-5"
         >
           <div className="min-w-64 flex-1">
             <Campo etiqueta="Nombre">
@@ -101,7 +101,7 @@ export default async function Catalogo({
 
           <button
             type="submit"
-            className="rounded-lg bg-cyan-400 px-5 py-2.5 font-bold text-[#0a1030] transition hover:bg-cyan-300"
+            className="rounded-lg bg-acento px-5 py-2.5 font-bold text-fondo transition hover:bg-acento-claro"
           >
             Agregar
           </button>
@@ -159,7 +159,7 @@ function FilaSkill({ skill, uso }: { skill: Skill; uso: Uso }) {
   const personas = datos?.personas ?? 0;
 
   return (
-    <div className="rounded-xl border border-slate-700 bg-[#111a42] px-4 py-3">
+    <div className="rounded-xl border border-linea bg-panel px-4 py-3">
       <form
         action={renombrarSkill}
         className="flex flex-wrap items-center gap-3"
@@ -170,14 +170,14 @@ function FilaSkill({ skill, uso }: { skill: Skill; uso: Uso }) {
           name="nombre"
           defaultValue={skill.nombre}
           aria-label={`Nombre de ${skill.nombre}`}
-          className="min-w-56 flex-1 rounded-lg border border-transparent bg-transparent px-2 py-1.5 text-sm font-semibold text-slate-100 hover:border-slate-600 focus:border-cyan-400 focus:bg-[#0d1538] focus:outline-none"
+          className="min-w-56 flex-1 rounded-lg border border-transparent bg-transparent px-2 py-1.5 text-sm font-semibold text-tinta hover:border-linea-fuerte focus:border-acento focus:bg-hueco focus:outline-none"
         />
 
         <select
           name="categoria"
           defaultValue={skill.categoria}
           aria-label={`Categoría de ${skill.nombre}`}
-          className="rounded-lg border border-slate-600 bg-[#0d1538] px-2 py-1.5 text-xs text-slate-200 focus:border-cyan-400 focus:outline-none"
+          className="rounded-lg border border-linea-fuerte bg-hueco px-2 py-1.5 text-xs text-tinta-2 focus:border-acento focus:outline-none"
         >
           {CATEGORIAS.map((c) => (
             <option key={c.id} value={c.id}>
@@ -186,9 +186,9 @@ function FilaSkill({ skill, uso }: { skill: Skill; uso: Uso }) {
           ))}
         </select>
 
-        <span className="w-44 shrink-0 text-xs text-slate-500">
+        <span className="w-44 shrink-0 text-xs text-tinta-4">
           {personas === 0 ? (
-            <span className="text-amber-300">nadie la tiene</span>
+            <span className="text-aviso">nadie la tiene</span>
           ) : (
             <>
               {personas} personas · {datos?.avanzados ?? 0} avanzados
@@ -198,7 +198,7 @@ function FilaSkill({ skill, uso }: { skill: Skill; uso: Uso }) {
 
         <button
           type="submit"
-          className="rounded-lg border border-slate-600 px-3 py-1.5 text-xs font-semibold text-slate-200 transition hover:border-cyan-400 hover:text-cyan-300"
+          className="rounded-lg border border-linea-fuerte px-3 py-1.5 text-xs font-semibold text-tinta-2 transition hover:border-acento hover:text-acento-claro"
         >
           Guardar
         </button>
@@ -207,7 +207,7 @@ function FilaSkill({ skill, uso }: { skill: Skill; uso: Uso }) {
       <div className="mt-2 flex flex-wrap items-center gap-4 text-xs">
         <Link
           href={`/buscar?q=${encodeURIComponent(skill.nombre)}`}
-          className="text-cyan-400 hover:text-cyan-300"
+          className="text-acento hover:text-acento-claro"
         >
           ver quién la tiene →
         </Link>
@@ -216,7 +216,7 @@ function FilaSkill({ skill, uso }: { skill: Skill; uso: Uso }) {
           <input type="hidden" name="skillId" value={skill.id} />
           <button
             type="submit"
-            className="text-rose-300 hover:text-rose-200"
+            className="text-alerta hover:text-alerta"
             title={
               personas > 0
                 ? `Se borra también la calificación de ${personas} personas`

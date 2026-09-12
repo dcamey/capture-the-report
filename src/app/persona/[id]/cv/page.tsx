@@ -34,34 +34,34 @@ export default async function CV({ params }: PageProps<"/persona/[id]/cv">) {
     .sort((a, b) => b.proyecto.inicio.localeCompare(a.proyecto.inicio));
 
   return (
-    <div className="min-h-screen bg-white text-slate-900">
+    <div className="min-h-screen bg-papel text-tinta-papel">
       <div className="mx-auto flex max-w-3xl items-center justify-between gap-4 px-8 pt-6 print:hidden">
         <Link
           href={`/persona/${persona.id}`}
-          className="text-sm text-cyan-700 hover:underline"
+          className="text-sm text-acento-fuerte hover:underline"
         >
           ← Volver al perfil
         </Link>
-        <BotonImprimir />
+        <BotonImprimir claro />
       </div>
 
       <article className="mx-auto max-w-3xl px-8 py-8 print:px-0 print:py-0">
-        <header className="border-b-2 border-slate-900 pb-4">
+        <header className="border-b-2 border-linea-papel pb-4">
           <div className="flex items-baseline justify-between gap-4">
-            <p className="text-xs font-bold uppercase tracking-[0.25em] text-slate-500">
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-tinta-papel-3">
               ES Consulting · ProdigiES
             </p>
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-tinta-papel-3">
               Perfil profesional · {inventario.generado}
             </p>
           </div>
           <h1 className="mt-2 text-3xl font-bold tracking-tight">
             {persona.nombre}
           </h1>
-          <p className="mt-1 text-lg text-slate-700">
+          <p className="mt-1 text-lg text-tinta-papel-2">
             {persona.rol} · {persona.equipo}
           </p>
-          <p className="mt-2 text-sm text-slate-600">
+          <p className="mt-2 text-sm text-tinta-papel-2">
             {persona.educacion} · En ES Consulting desde {persona.ingreso} ·
             Idiomas: {persona.idiomas.join(", ")}
           </p>
@@ -69,17 +69,17 @@ export default async function CV({ params }: PageProps<"/persona/[id]/cv">) {
 
         {persona.descripcion ? (
           <section className="mt-6">
-            <h2 className="text-xs font-bold uppercase tracking-widest text-slate-500">
+            <h2 className="text-xs font-bold uppercase tracking-widest text-tinta-papel-3">
               Perfil
             </h2>
-            <p className="mt-1.5 text-sm leading-relaxed text-slate-800">
+            <p className="mt-1.5 text-sm leading-relaxed text-tinta-papel">
               {persona.descripcion}
             </p>
           </section>
         ) : null}
 
         <section className="mt-6">
-          <h2 className="text-xs font-bold uppercase tracking-widest text-slate-500">
+          <h2 className="text-xs font-bold uppercase tracking-widest text-tinta-papel-3">
             Habilidades y nivel
           </h2>
           <div className="mt-2 grid gap-5 sm:grid-cols-3">
@@ -89,7 +89,7 @@ export default async function CV({ params }: PageProps<"/persona/[id]/cv">) {
                 <div key={categoria.id} className="break-inside-avoid">
                   <h3 className="text-sm font-bold">{categoria.nombre}</h3>
                   {skills.length === 0 ? (
-                    <p className="mt-1 text-xs text-slate-500">
+                    <p className="mt-1 text-xs text-tinta-papel-3">
                       Sin registro en esta categoría.
                     </p>
                   ) : (
@@ -99,9 +99,9 @@ export default async function CV({ params }: PageProps<"/persona/[id]/cv">) {
                           key={skill.id}
                           className="flex items-center justify-between gap-2 text-xs"
                         >
-                          <span className="text-slate-800">{skill.nombre}</span>
+                          <span className="text-tinta-papel">{skill.nombre}</span>
                           <span className="flex shrink-0 items-center gap-1.5">
-                            <span className="text-slate-500">
+                            <span className="text-tinta-papel-3">
                               {nivelCorto(inventario.escala, nivel)}
                             </span>
                             <NivelBarra nivel={nivel} claro />
@@ -117,19 +117,19 @@ export default async function CV({ params }: PageProps<"/persona/[id]/cv">) {
         </section>
 
         <section className="mt-6 break-inside-avoid">
-          <h2 className="text-xs font-bold uppercase tracking-widest text-slate-500">
+          <h2 className="text-xs font-bold uppercase tracking-widest text-tinta-papel-3">
             Certificaciones vigentes
           </h2>
           {vigentes.length === 0 ? (
-            <p className="mt-1.5 text-sm text-slate-600">
+            <p className="mt-1.5 text-sm text-tinta-papel-2">
               Sin certificaciones vigentes registradas.
             </p>
           ) : (
             <ul className="mt-1.5 space-y-1 text-sm">
               {vigentes.map((cert) => (
-                <li key={cert.nombre} className="text-slate-800">
+                <li key={cert.nombre} className="text-tinta-papel">
                   <strong>{cert.nombre}</strong>{" "}
-                  <span className="text-slate-500">
+                  <span className="text-tinta-papel-3">
                     — emitida {cert.emitida}, vigente hasta {cert.vence}
                   </span>
                 </li>
@@ -139,28 +139,28 @@ export default async function CV({ params }: PageProps<"/persona/[id]/cv">) {
         </section>
 
         <section className="mt-6 break-inside-avoid">
-          <h2 className="text-xs font-bold uppercase tracking-widest text-slate-500">
+          <h2 className="text-xs font-bold uppercase tracking-widest text-tinta-papel-3">
             Experiencia en proyectos
           </h2>
           {proyectos.length === 0 ? (
-            <p className="mt-1.5 text-sm text-slate-600">
+            <p className="mt-1.5 text-sm text-tinta-papel-2">
               Sin proyectos registrados en la plataforma.
             </p>
           ) : (
             <ul className="mt-1.5 space-y-2 text-sm">
               {proyectos.map(({ proyecto, asignacion }) => (
                 <li key={proyecto.id}>
-                  <p className="font-semibold text-slate-900">
+                  <p className="font-semibold text-tinta-papel">
                     {proyecto.nombre} — {proyecto.cliente}
                   </p>
-                  <p className="text-xs text-slate-600">
+                  <p className="text-xs text-tinta-papel-2">
                     {asignacion!.rolProyecto} · {asignacion!.dedicacion}% de
                     dedicación · {proyecto.inicio} → {proyecto.fin} ·{" "}
                     {proyecto.estado === "en-ejecucion"
                       ? "en ejecución"
                       : proyecto.estado}
                   </p>
-                  <p className="text-xs text-slate-600">
+                  <p className="text-xs text-tinta-papel-2">
                     {proyecto.descripcion}
                   </p>
                 </li>
@@ -169,7 +169,7 @@ export default async function CV({ params }: PageProps<"/persona/[id]/cv">) {
           )}
         </section>
 
-        <footer className="mt-8 border-t border-slate-300 pt-4 text-xs text-slate-500">
+        <footer className="mt-8 border-t border-linea-papel pt-4 text-xs text-tinta-papel-3">
           <p>
             Generado por ProdigiES a partir de la matriz de habilidades de ES
             Consulting. Los niveles siguen la escala 0–3:{" "}

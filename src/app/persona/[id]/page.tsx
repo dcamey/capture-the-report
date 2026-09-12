@@ -63,7 +63,7 @@ export default async function PerfilPersona({
 
   return (
     <main className="mx-auto w-full max-w-5xl px-6 py-10">
-      <Link href={volverA} className="text-sm text-cyan-400 hover:text-cyan-300">
+      <Link href={volverA} className="text-sm text-acento hover:text-acento-claro">
         ← {consulta ? "Volver al buscador" : "Volver a perfiles"}
       </Link>
 
@@ -80,13 +80,13 @@ export default async function PerfilPersona({
             <h1 className="text-3xl font-bold tracking-tight">
               {persona.nombre}
             </h1>
-            <p className="mt-1 text-slate-300">
+            <p className="mt-1 text-tinta-2">
               {persona.rol} · {persona.equipo}
             </p>
-            <p className="mt-1 text-sm text-slate-500">
+            <p className="mt-1 text-sm text-tinta-4">
               {persona.educacion} · en ES Consulting desde {persona.ingreso}
             </p>
-            <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-slate-400">
+            <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-tinta-3">
               <Disponibilidad pct={persona.disponibilidad} />
               <Etiqueta
                 tono={
@@ -107,19 +107,19 @@ export default async function PerfilPersona({
         <div className="flex flex-wrap gap-2">
           <Link
             href={`/persona/${persona.id}/cv`}
-            className="rounded-lg border border-slate-600 px-4 py-2.5 text-sm font-semibold text-slate-200 transition hover:border-cyan-400 hover:text-cyan-300"
+            className="rounded-lg border border-linea-fuerte px-4 py-2.5 text-sm font-semibold text-tinta-2 transition hover:border-acento hover:text-acento-claro"
           >
             Descargar CV
           </Link>
           <Link
             href={`/persona/${persona.id}/editar`}
-            className="rounded-lg border border-slate-600 px-4 py-2.5 text-sm font-semibold text-slate-200 transition hover:border-cyan-400 hover:text-cyan-300"
+            className="rounded-lg border border-linea-fuerte px-4 py-2.5 text-sm font-semibold text-tinta-2 transition hover:border-acento hover:text-acento-claro"
           >
             Editar perfil
           </Link>
           <Link
             href={`/reporte?ids=${encodeURIComponent(persona.id)}${sufijo}`}
-            className="rounded-lg bg-cyan-400 px-4 py-2.5 text-sm font-bold text-[#0a1030] transition hover:bg-cyan-300"
+            className="rounded-lg bg-acento px-4 py-2.5 text-sm font-bold text-fondo transition hover:bg-acento-claro"
           >
             Ficha de capacidades →
           </Link>
@@ -127,32 +127,32 @@ export default async function PerfilPersona({
       </header>
 
       {persona.descripcion ? (
-        <p className="mt-6 max-w-3xl text-slate-300">{persona.descripcion}</p>
+        <p className="mt-6 max-w-3xl text-tinta-2">{persona.descripcion}</p>
       ) : null}
 
-      <p className="mt-4 rounded-lg border border-slate-800 bg-[#0d1538] px-4 py-2 text-xs text-slate-400">
+      <p className="mt-4 rounded-lg border border-linea-suave bg-hueco px-4 py-2 text-xs text-tinta-3">
         Origen de los datos: {ORIGEN[persona.origen]}.
       </p>
 
       <section className="mt-8 grid gap-3 sm:grid-cols-3">
         {CATEGORIAS.map((categoria) => (
           <Panel key={categoria.id}>
-            <p className="text-xs uppercase tracking-wider text-slate-500">
+            <p className="text-xs uppercase tracking-wider text-tinta-4">
               {categoria.nombre}
             </p>
-            <p className="mt-1 text-2xl font-bold text-cyan-300">
+            <p className="mt-1 text-2xl font-bold text-acento-claro">
               {punteos[categoria.id]}
-              <span className="text-base font-normal text-slate-500">
+              <span className="text-base font-normal text-tinta-4">
                 {" "}
                 / {punteoMaximo(categoria.id, inventario.skills)}
               </span>
             </p>
-            <p className="mt-1 text-xs text-slate-500">punteo de la categoría</p>
+            <p className="mt-1 text-xs text-tinta-4">punteo de la categoría</p>
           </Panel>
         ))}
       </section>
 
-      <nav className="mt-8 flex gap-1 border-b border-slate-800">
+      <nav className="mt-8 flex gap-1 border-b border-linea-suave">
         {TABS.map((t) => (
           <Link
             key={t.id}
@@ -160,8 +160,8 @@ export default async function PerfilPersona({
             aria-current={t.id === activa ? "page" : undefined}
             className={`-mb-px border-b-2 px-4 py-2 text-sm transition ${
               t.id === activa
-                ? "border-cyan-400 font-bold text-cyan-300"
-                : "border-transparent text-slate-400 hover:text-slate-100"
+                ? "border-acento font-bold text-acento-claro"
+                : "border-transparent text-tinta-3 hover:text-tinta"
             }`}
           >
             {t.etiqueta}
@@ -181,7 +181,7 @@ export default async function PerfilPersona({
         ) : null}
       </div>
 
-      <footer className="mt-12 border-t border-slate-800 pt-5 text-xs text-slate-500">
+      <footer className="mt-12 border-t border-linea-suave pt-5 text-xs text-tinta-4">
         <p>
           El registro y la actualización del perfil los hace RRHH. La
           disponibilidad se calcula de los proyectos asignados, y el líder del
@@ -213,21 +213,21 @@ function Habilidades({
             </TituloSeccion>
 
             {skills.length === 0 ? (
-              <p className="mt-3 text-sm text-slate-500">
+              <p className="mt-3 text-sm text-tinta-4">
                 Sin habilidades registradas en esta categoría.
               </p>
             ) : (
-              <ul className="mt-3 divide-y divide-slate-800 overflow-hidden rounded-xl border border-slate-700 bg-[#111a42]">
+              <ul className="mt-3 divide-y divide-linea-suave overflow-hidden rounded-xl border border-linea bg-panel">
                 {skills.map(({ skill, nivel }) => (
                   <li
                     key={skill.id}
                     className="flex items-center justify-between gap-4 px-4 py-2.5"
                   >
-                    <span className="text-sm text-slate-100">
+                    <span className="text-sm text-tinta">
                       {skill.nombre}
                     </span>
                     <span className="flex shrink-0 items-center gap-3">
-                      <span className="text-xs text-slate-400">
+                      <span className="text-xs text-tinta-3">
                         {nivelCorto(inventario.escala, nivel)}
                       </span>
                       <NivelBarra nivel={nivel} />
@@ -239,11 +239,11 @@ function Habilidades({
           </div>
         );
       })}
-      <p className="text-xs text-slate-500">
+      <p className="text-xs text-tinta-4">
         Lo que no aparece está en 0 (no tiene conocimiento).{" "}
         <Link
           href={`/persona/${persona.id}/editar?tab=habilidades`}
-          className="text-cyan-400 hover:text-cyan-300"
+          className="text-acento hover:text-acento-claro"
         >
           Calificar habilidades →
         </Link>
@@ -265,7 +265,7 @@ function Certificaciones({ persona }: { persona: Persona }) {
         accion={
           <Link
             href={`/persona/${persona.id}/editar?tab=certificaciones`}
-            className="text-sm text-cyan-400 hover:text-cyan-300"
+            className="text-sm text-acento hover:text-acento-claro"
           >
             + Agregar certificación
           </Link>
@@ -275,13 +275,13 @@ function Certificaciones({ persona }: { persona: Persona }) {
       </TituloSeccion>
 
       {ordenadas.length === 0 ? (
-        <p className="mt-3 text-sm text-slate-500">
+        <p className="mt-3 text-sm text-tinta-4">
           Sin certificaciones registradas.
         </p>
       ) : (
         <table className="mt-4 w-full border-collapse text-sm">
           <thead>
-            <tr className="border-b border-slate-700 text-left text-xs uppercase tracking-wider text-slate-500">
+            <tr className="border-b border-linea text-left text-xs uppercase tracking-wider text-tinta-4">
               <th className="py-2 font-semibold">Certificación</th>
               <th className="py-2 font-semibold">Emitida</th>
               <th className="py-2 font-semibold">Vence</th>
@@ -294,12 +294,12 @@ function Certificaciones({ persona }: { persona: Persona }) {
               const estado = estadoCertificacion(cert);
               const dias = diasHasta(cert.vence);
               return (
-                <tr key={cert.nombre} className="border-b border-slate-800">
-                  <td className="py-2.5 font-semibold text-slate-100">
+                <tr key={cert.nombre} className="border-b border-linea-suave">
+                  <td className="py-2.5 font-semibold text-tinta">
                     {cert.nombre}
                   </td>
-                  <td className="py-2.5 text-slate-400">{cert.emitida}</td>
-                  <td className="py-2.5 text-slate-400">{cert.vence}</td>
+                  <td className="py-2.5 text-tinta-3">{cert.emitida}</td>
+                  <td className="py-2.5 text-tinta-3">{cert.vence}</td>
                   <td className="py-2.5">
                     <Etiqueta
                       tono={
@@ -317,7 +317,7 @@ function Certificaciones({ persona }: { persona: Persona }) {
                           : `vencida hace ${Math.abs(dias)} d`}
                     </Etiqueta>
                   </td>
-                  <td className="py-2.5 text-xs text-slate-500">
+                  <td className="py-2.5 text-xs text-tinta-4">
                     {cert.archivo ?? "sin adjunto"}
                   </td>
                 </tr>
@@ -327,7 +327,7 @@ function Certificaciones({ persona }: { persona: Persona }) {
         </table>
       )}
 
-      <p className="mt-3 text-xs text-slate-500">
+      <p className="mt-3 text-xs text-tinta-4">
         {vigentes.length} de {persona.certificaciones.length} vigentes. El
         adjunto se registra por nombre: el prototipo no sube archivos.
       </p>
@@ -357,7 +357,7 @@ function Proyectos({
       <TituloSeccion
         nota="Solo los proyectos en ejecución consumen disponibilidad"
         accion={
-          <Link href="/carga" className="text-sm text-cyan-400 hover:text-cyan-300">
+          <Link href="/carga" className="text-sm text-acento hover:text-acento-claro">
             ver carga del equipo →
           </Link>
         }
@@ -366,7 +366,7 @@ function Proyectos({
       </TituloSeccion>
 
       {asignados.length === 0 ? (
-        <p className="mt-3 text-sm text-slate-500">
+        <p className="mt-3 text-sm text-tinta-4">
           Sin proyectos asignados: está en banca, 100% disponible.
         </p>
       ) : (
@@ -374,16 +374,16 @@ function Proyectos({
           {[...activos, ...otros].map(({ proyecto, asignacion }) => (
             <li
               key={proyecto.id}
-              className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-slate-700 bg-[#111a42] px-4 py-3"
+              className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-linea bg-panel px-4 py-3"
             >
               <div className="min-w-0">
                 <Link
                   href={`/proyecto/${proyecto.id}`}
-                  className="font-semibold hover:text-cyan-300 hover:underline"
+                  className="font-semibold hover:text-acento-claro hover:underline"
                 >
                   {proyecto.nombre}
                 </Link>
-                <p className="text-xs text-slate-400">
+                <p className="text-xs text-tinta-3">
                   {proyecto.cliente} · {asignacion!.rolProyecto} ·{" "}
                   {proyecto.inicio} → {proyecto.fin}
                 </p>
@@ -396,7 +396,7 @@ function Proyectos({
                     ? "en ejecución"
                     : proyecto.estado}
                 </Etiqueta>
-                <span className="text-sm font-bold tabular-nums text-slate-100">
+                <span className="text-sm font-bold tabular-nums text-tinta">
                   {asignacion!.dedicacion}%
                 </span>
               </div>
@@ -405,10 +405,10 @@ function Proyectos({
         </ul>
       )}
 
-      <p className="mt-4 text-sm text-slate-400">
-        Carga total: <strong className="text-slate-100">{persona.carga}%</strong>{" "}
+      <p className="mt-4 text-sm text-tinta-3">
+        Carga total: <strong className="text-tinta">{persona.carga}%</strong>{" "}
         · disponible{" "}
-        <strong className="text-slate-100">{persona.disponibilidad}%</strong>
+        <strong className="text-tinta">{persona.disponibilidad}%</strong>
       </p>
     </section>
   );
